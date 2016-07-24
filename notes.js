@@ -32,3 +32,10 @@
     - Remove isAuthenticating defaultProps from AppContainer
     - Build out UI for Splash.js
     - SplashContainer Changes
+8) Add Redux
+    - npm install --save redux react-redux redux-thunk
+    - Create authentication module (talk about Ducks pattern)
+    - Create index.js in /redux
+    - Add Redux & friends to /app/index.js
+    - Connect AppContainer and get isAuthenticating
+    - Change initialState of authentication.isAuthenticating and see how the view changes

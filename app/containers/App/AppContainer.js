@@ -1,10 +1,13 @@
 import React, { PropTypes, Component } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import { connect } from 'react-redux'
 import { ReactModoroNavigator } from '~/containers'
 import { PreSplash } from '~/components'
 
-export default class AppContainer extends Component {
-  static propTypes = {}
+class AppContainer extends Component {
+  static propTypes = {
+    isAuthenticating: PropTypes.bool.isRequired,
+  }
   render () {
     return (
       <View style={{flex: 1}}>
@@ -15,3 +18,7 @@ export default class AppContainer extends Component {
     )
   }
 }
+
+export default connect(
+  ({authentication}) => ({isAuthenticating: authentication.isAuthenticating})
+)(AppContainer)
