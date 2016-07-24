@@ -28,3 +28,7 @@
     - Build out UI for PreSplash
       - Center image first (SFC first)
       - Add animations (Switch to Class)
+7) Splash UI
+    - Remove isAuthenticating defaultProps from AppContainer
+    - Build out UI for Splash.js
+    - SplashContainer Changes

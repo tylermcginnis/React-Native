@@ -5,9 +5,6 @@ import { PreSplash } from '~/components'
 
 export default class AppContainer extends Component {
   static propTypes = {}
-  static defaultProps = {
-    isAuthenticating: true,
-  }
   render () {
     return (
       <View style={{flex: 1}}>

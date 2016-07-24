@@ -3,11 +3,21 @@ import { View, Text } from 'react-native'
 import { Splash } from '~/components'
 
 export default class SplashContainer extends Component {
-  static propTypes = {}
-  state = {}
+  static propTypes = {
+    navigator: PropTypes.object.isRequired,
+  }
+  handleLoginFinished = (error, result) => {
+    if (error) {
+
+    } else if (result.isCancelled = true) {
+
+    } else {
+
+    }
+  }
   render () {
     return (
-      <Splash />
+      <Splash onLoginFinished={this.handleLoginFinished} />
     )
   }
 }
