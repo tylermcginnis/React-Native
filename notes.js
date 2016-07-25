@@ -53,3 +53,8 @@
         - The rest
     - In ReactModoroNavigator render FooterTabsContainer instead of SplashContainer
     - Toggle between tabs. Walk through whole flow again.
+10) Remote Redux DevTools
+    - npm install --save-dev remote-redux-devtools
+    - Add devTools() to app/index.js
+    - If dont have, download redux-devtools-extension https://github.com/zalmoxisus/redux-devtools-extension
+    - Show how Remote Redux Devtools works (CMD + CTRL + Up)
