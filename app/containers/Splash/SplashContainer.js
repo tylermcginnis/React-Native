@@ -1,18 +1,22 @@
 import React, { PropTypes, Component } from 'react'
 import { View, Text } from 'react-native'
+import { connect } from 'react-redux'
 import { Splash } from '~/components'
+import { handleAuthWithFirebase } from '~/redux/modules/authentication'
 
-export default class SplashContainer extends Component {
+class SplashContainer extends Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
   }
   handleLoginFinished = (error, result) => {
     if (error) {
-
-    } else if (result.isCancelled = true) {
-
+      // Todo
+      console.log('Error in handleLoginFinished', error)
+    } else if (result.isCancelled === true) {
+      // Todo
+      console.log('Login Cancelled')
     } else {
-
+      this.props.dispatch(handleAuthWithFirebase())
     }
   }
   render () {
@@ -21,3 +25,5 @@ export default class SplashContainer extends Component {
     )
   }
 }
+
+export default connect()(SplashContainer)

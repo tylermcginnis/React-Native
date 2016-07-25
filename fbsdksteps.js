@@ -1,7 +1,7 @@
 1) npm install --save react-native-fbsdk
 2) react-native link
 3) Create New iOS App (https://developers.facebook.com/apps)
-4) Download the DSK and put in ~/Documents/FacebookSDK
+4) Download the SDK and put in ~/Documents/FacebookSDK
 5) Add the Facebook SDK to your Xcode Project (Follow next screen.)
     - Open up .xcodeproject
     - Create 'Frameworks' group

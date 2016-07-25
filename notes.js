@@ -58,3 +58,31 @@
     - Add devTools() to app/index.js
     - If dont have, download redux-devtools-extension https://github.com/zalmoxisus/redux-devtools-extension
     - Show how Remote Redux Devtools works (CMD + CTRL + Up)
+11) Autentication
+    - Add this.props.isAuthed === false to ReactModoroNavigator for SplashContainer (Reason this works is we know if the Navigator renders then isAuthenticating is already false)
+    - Add propTypes for ^
+    - Add isAuthed to AppContainer and pass it to ReactModoroNavigator
+    - Change isAuthenticating in initialState from true to false. Should render Splash. Change it back to true.
+    - Now we're at the point where we need to check if we're authed onMount of AppContainer, and switch our state appropriately.
+    - npm install --save firebase
+    - Create /constants/config.js file and import firebase
+    - firebase.google.com and create a new project
+    - "Auth" in sidebar -> "Sign In Method" -> Facebook. Copy over App ID and App Secret.
+    - Copy OAuth URL and head over to Facebook Developers Console.
+    - "Add Product" -> "Facebook Login" -> Paste in OAuth URL.
+    - "App Review" -> Make ReactModoro public? -> Yes or else auth won't work.
+    - Back in Firebase console get the Config object. ("Add Firebase to your Website")
+    - Back in constants.js initialize Firebase and export ref, firebaesAuth, and facebookProvider
+    - Create /api/auth.js and create getAccessToken, authWithToken, and updateUser.
+    - In redux/modules/authentication create authenticating function (with constant and reducer)
+    - Create notAuthed function with constant and reducer
+    - Create isAuthed function with constants and reducer
+    - Create handleAuthWithFirebase. (Talk about how LoginButton abstracts the Facebook auth stuff for us. So once we're authed with Facebook we need to tell Firebase about it)
+    - Add this.props.dispatch(handleAuthWithFirebase()) in handleLoginFinished in SplashContainer. Don't forget to connect SplashContainer. This is the way of "telling Firebase about it"
+    - Talk about Firebase auth needs to listen for changes. Little weird but what we're given. The function its going to call when it hears a change is...
+    - Create onAuthChange skeleton right now (if user null, else)
+    - Now tie onAuthChange to the firebase listener by adding firebaseAuth.onAuthStateChange in AppConatiner
+    - At this point walk throught the flow. LoginButton (Facebook auth) -> handleLoginFinished -> handleAuthWithFirebase -> authWithToken->  onAuthChange
+    - Fill out onAuthChange
+    - At this point show the Redux flow in ReduxDevTools. App loads, default state is correct with authentication.isAuthenticating to true, NOT_AUTHED happens and then authentication.isAuthenticating goes to false.
+    - Authenticate. Should be redireced to Home. Hit refresh, should get ShakeyLogo -> Home. Nice.
