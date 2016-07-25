@@ -1,3 +1,6 @@
 export AppContainer from './App/AppContainer'
 export SplashContainer from './Splash/SplashContainer'
 export ReactModoroNavigator from './Navigator/ReactModoroNavigator'
+export FooterTabsContainer from './FooterTabs/FooterTabsContainer'
+export LeaderboardContainer from './Leaderboard/LeaderboardContainer'
+export HomeContainer from './Home/HomeContainer'

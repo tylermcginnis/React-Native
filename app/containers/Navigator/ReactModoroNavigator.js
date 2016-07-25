@@ -1,11 +1,11 @@
 import React, { PropTypes, Component } from 'react'
 import { Navigator } from 'react-native'
-import { SplashContainer } from '~/containers'
+import { SplashContainer, FooterTabsContainer } from '~/containers'
 
 export default class ReactModoroNavigator extends Component {
   static propTypes = {}
   renderScene = (route, navigator) => {
-    return <SplashContainer navigator={navigator} />
+    return <FooterTabsContainer navigator={navigator} />
   }
   configureScene = () => {
 

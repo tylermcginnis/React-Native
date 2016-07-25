@@ -39,3 +39,17 @@
     - Add Redux & friends to /app/index.js
     - Connect AppContainer and get isAuthenticating
     - Change initialState of authentication.isAuthenticating and see how the view changes
+9) FooterTabs
+    - Talk about how TabBarIOS works
+    - We need a way to cache what current tab were on.
+    - Create footerTabs redux module
+    - Create FooterTabsContainer
+    - Create HomeContainer/Home.js both with Skeletons
+    - Create LeaderboardConatiner/Leaderboard.js both with Skeletons
+    - Create FooterTabs
+        - npm install --save react-native-vector-icons
+        - react-native link
+        - Restart npm run start and re-run react-native run-ios
+        - The rest
+    - In ReactModoroNavigator render FooterTabsContainer instead of SplashContainer
+    - Toggle between tabs. Walk through whole flow again.
