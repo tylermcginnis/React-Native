@@ -121,3 +121,11 @@
     - Build Cancel.js in Icons
     - Add Cancel as leftButton in Settings.js
     - Now, notice how the popup is see through? Fix View on Settings.js to be white background.
+15) Settings UI
+    - npm installl --save react-native-slider
+    - Add initialState to settingsContainer
+    - Create handleTimeChange, handleRestChange, onRestComplete, onTimerComplete
+    - Pass timerDuration, restDuration, onTimerChange, onRestChange, onRestComplete, and onTimerComplete down to Settings.
+    - Build out UI for both sliders.
+    - Add Logout UI to Settings
+    - Create handleLogout function in SettingsConatiner and pass it down. Just log logout for now.
