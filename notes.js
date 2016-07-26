@@ -73,9 +73,9 @@
     - "App Review" -> Make ReactModoro public? -> Yes or else auth won't work.
     - Back in Firebase console get the Config object. ("Add Firebase to your Website")
     - Back in constants.js initialize Firebase and export ref, firebaesAuth, and facebookProvider
-    - Create /api/auth.js and create getAccessToken, authWithToken, and updateUser.
+    - Create /api/auth.js and create getAccessToken, authWithToken. DONT CREATE UPDATEUSER EVEN THOUGH ITS IN SOLUTION.
     - In redux/modules/authentication create authenticating function (with constant and reducer)
-    - Create notAuthed function with constant and reducer
+    - Create notAuthed function with constant and reducer (This has more code in it than in the solution. Also isAuthed: false & authedId: '')
     - Create isAuthed function with constants and reducer
     - Create handleAuthWithFirebase. (Talk about how LoginButton abstracts the Facebook auth stuff for us. So once we're authed with Facebook we need to tell Firebase about it)
     - Add this.props.dispatch(handleAuthWithFirebase()) in handleLoginFinished in SplashContainer. Don't forget to connect SplashContainer. This is the way of "telling Firebase about it"
@@ -86,3 +86,8 @@
     - Fill out onAuthChange
     - At this point show the Redux flow in ReduxDevTools. App loads, default state is correct with authentication.isAuthenticating to true, NOT_AUTHED happens and then authentication.isAuthenticating goes to false.
     - Authenticate. Should be redireced to Home. Hit refresh, should get ShakeyLogo -> Home. Nice.
+12) Save User
+    - Explain how firebase auths for you but doesnt save the user for you. So whenever we auth we want to save that user.
+    - Create updateUser in auth.js
+    - import updateUser into authentication
+    - Call updateUser in onAuthChange then dispatch isAuthed. (Show this working by having firebase console open)

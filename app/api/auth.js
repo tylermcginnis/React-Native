@@ -11,5 +11,5 @@ export function authWithToken (accessToken) {
 }
 
 export function updateUser (user) {
-  return ref.child(`users/${user.user_id}/info`).set(user)
+  return ref.child(`users/${user.uid}`).set(user)
 }

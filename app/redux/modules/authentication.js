@@ -1,4 +1,4 @@
-import { getAccessToken, authWithToken } from '~/api/auth'
+import { getAccessToken, authWithToken, updateUser } from '~/api/auth'
 
 const AUTHENTICATING = 'AUTHENTICATING'
 const NOT_AUTHED = 'NOT_AUTHED'
@@ -9,8 +9,12 @@ export function onAuthChange (user) {
     if (!user) {
       dispatch(notAuthed())
     } else {
-      const { providerData, uid } = user
-      dispatch(isAuthed(uid))
+      const { uid, displayName, photoURL } = user
+      updateUser({
+        uid,
+        name: displayName,
+        avatar: photoURL,
+      }).then(() => dispatch(isAuthed(uid)))
     }
   }
 }
@@ -60,7 +64,8 @@ export default function authentication (state = initialState, action) {
       return {
         ...state,
         isAuthenticating: false,
-
+        isAuthed: false,
+        authedId: '',
       }
     case IS_AUTHED :
       return {
