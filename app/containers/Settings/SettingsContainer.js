@@ -1,7 +1,9 @@
 import React, { PropTypes, Component } from 'react'
 import { Settings } from '~/components'
+import { connect } from 'react-redux'
+import { handleUnauth } from '~/redux/modules/authentication'
 
-export default class SettingsContainer extends Component {
+class SettingsContainer extends Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
   }
@@ -22,7 +24,7 @@ export default class SettingsContainer extends Component {
     console.log('FINISHED RESSSTTT')
   }
   handleLogout = () => {
-    console.log('LOGOUT')
+    this.props.dispatch(handleUnauth())
   }
   render () {
     return (
@@ -38,3 +40,5 @@ export default class SettingsContainer extends Component {
     )
   }
 }
+
+export default connect()(SettingsContainer)

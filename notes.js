@@ -129,3 +129,12 @@
     - Build out UI for both sliders.
     - Add Logout UI to Settings
     - Create handleLogout function in SettingsConatiner and pass it down. Just log logout for now.
+16) Logout
+    - Add logout to auth.js
+    - Create handleUnauth in authentication.js
+    - Create loggingOut and export the constant. Talk about how we want to clear the state on logout
+    - import { LOGGING_OUT } from '~/redux/modules/authentication' in index.js
+    - create appReducer and rootReducer
+    - In createStore pass in rootReducer
+    - update handleLogout in SettingsContainer to call authentication.handleUnauth
+    - Logout. Profit.

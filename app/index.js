@@ -6,9 +6,20 @@ import thunk from 'redux-thunk'
 import * as reducers from './redux'
 import { AppContainer } from './containers'
 import devTools from 'remote-redux-devtools'
+import { LOGGING_OUT } from '~/redux/modules/authentication'
+
+const appReducer = combineReducers(reducers)
+
+function rootReducer (state, action) {
+  if (action.type === LOGGING_OUT) {
+    state = undefined
+  }
+
+  return appReducer(state, action)
+}
 
 const store = createStore(
-  combineReducers(reducers),
+  rootReducer,
   compose(
     applyMiddleware(thunk),
     devTools()
