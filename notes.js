@@ -91,3 +91,17 @@
     - Create updateUser in auth.js
     - import updateUser into authentication
     - Call updateUser in onAuthChange then dispatch isAuthed. (Show this working by having firebase console open)
+13) Navbar
+    - Create a ReactModoroNavbar folder and file
+    - npm install --save react-native-navbar
+    - Talk about Higher Order Components. We will wrap react-native-navbar to make it more consumable for our needs
+    - Just have ReactModoroNavbar render a tabbar with a title and show it working on Home.js (first with just title={{title: 'Hello!'}}) then add in tintColor, then add in title through props
+    - Now add Navbar to Leaderboard tab.
+    - Now talk about how we want a more dynamic Navbar with forward and back buttons.
+    - Add leftButton to ReactModoroNavbar which uses React.cloneElement passing in style
+    - Add rightButton which does the same as leftButton
+    - Add a Gear right button to Home
+        - Create an Icons folder
+        - Create Gear.js
+        - Import Gear into Home and add it as a rightButton. Show how it's showing but not aligned. Add styling
+        - Click Gar. Show how it works. Talk about how now whenever we use ReactModoroNavbar we can easily add a left or right button.
