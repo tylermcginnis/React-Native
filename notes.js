@@ -105,3 +105,19 @@
         - Create Gear.js
         - Import Gear into Home and add it as a rightButton. Show how it's showing but not aligned. Add styling
         - Click Gar. Show how it works. Talk about how now whenever we use ReactModoroNavbar we can easily add a left or right button.
+14) Gear Route
+    - Build out the skeleton for the Settings route so clicking on the gear does more than console.log (Also really show how routing works)
+    - Settings.js file in components
+    - SettingsContainer
+    - Head to ReactModoroNavigator and render SettingsConatiner (before every else) to make sure it works.
+    - Put SettingsContainer in else if (route.settings === true)
+    - Head back to Home.js and change onPress of right buttn to props.onToSettings
+    - Add handleToSettings in HomeContainer
+    - Try to run this. Get 'Cannot read property defaultTransitionVelocity of undefined'. Click on 'Constructor' in error.
+    - Show how error has to do with nextSceneConfig. Talk about sceneConfigs. Add default sceneconfig in ReactModoroNavigator
+    - Doesn't feel like. Though that should be default, add in a check for settings then come up from bottom.
+    - Show how to check for Platform changes. Add in Android default.
+    - Add (default) Navbar to Settings. Run it. Notice there's no way to route back.
+    - Build Cancel.js in Icons
+    - Add Cancel as leftButton in Settings.js
+    - Now, notice how the popup is see through? Fix View on Settings.js to be white background.

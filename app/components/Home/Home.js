@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from 'react-native'
 import { ReactModoroNavbar, Gear } from '~/components'
 
 Home.propTypes = {
-
+  onToSettings: PropTypes.func.isRequired,
 }
 
 export default function Home (props) {
@@ -11,7 +11,7 @@ export default function Home (props) {
     <View>
       <ReactModoroNavbar
         title='Home'
-        rightButton={<Gear onPress={() => console.log('Gear Click')} />}/>
+        rightButton={<Gear onPress={props.onToSettings} />}/>
       <Text>
         Home
       </Text>
