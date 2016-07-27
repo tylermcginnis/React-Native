@@ -138,3 +138,9 @@
     - In createStore pass in rootReducer
     - update handleLogout in SettingsContainer to call authentication.handleUnauth
     - Logout. Profit.
+17) Flash Notification
+    - We need a way to give the user feedback for certain actions. One good way is with a Flash Notification.
+    - Build out flashNotification redux module
+    - Build the FlashNotification component
+    - Add FlashNotification to root AppContainer and tie of flashNotification redux module to it.
+    - To test it out add showFlashNotification to SettingsContainer and show it in handleTimerComplete
