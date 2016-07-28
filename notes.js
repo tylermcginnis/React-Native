@@ -166,3 +166,17 @@
     - Import them into authentication, then dispatch the updates.
     - Hit refresh, check redux dev tools for dispatches. Check settings view to make sure all is well.
     - Show off offline capabilites of Firebase. Turn off internet. Change settings. Turn on internet.
+19) Timer State
+    - We need to think of the best way to manage the timer state. First thought is in Redux and dispatch an action every second. Not every efficient.
+    - What if we manage the timer state in local component state then just dispatch actions every minute?
+    - Create a timer and rest property on state and set them both pretty low to be able to test switching from timer to rest.
+    - Also create activeCountdown on state and set it to timer.
+    - Create handleToggleCountdown and pass it to Home.js
+    - Pass in timer, rest, and activeCountdown to Home
+    - Create very basic UI to be able to see the countdown running and also be able to start/stop the countdown.
+    - You should be able to start the countdown, and when it hits 0, it switches from timer to rest or rest to timer and repeats.
+    - Create a handleReset function and pass it down to Home.
+    - Create a button for reset and check it works.
+    - Create a skip rest function and pass it down.
+    - Create a button to test skip rest is working.
+    - Talk about the pros and cons of having all this state be in a component rather than in Redux and the final decision to do it.
