@@ -18,12 +18,12 @@ export function onAuthChange (user) {
         name: displayName,
         avatar: photoURL,
       })
-      .then(() => dispatch(isAuthed(uid)))
       .then(() => fetchSettings(uid))
       .then((settings) => Promise.all([
         dispatch(addSettingsTimerDuration(settings.timerDuration)),
         dispatch(addSettingsRestDuration(settings.restDuration))
       ]))
+      .then(() => dispatch(isAuthed(uid)))
     }
   }
 }

@@ -2,6 +2,13 @@ import React, { PropTypes } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { ReactModoroNavbar, Gear } from '~/components'
 
+function secondsToHMS(secs) {
+  const hours = Math.floor(secs / 3600)
+  const mins = Math.floor(secs % 3600 / 60)
+  const seconds = Math.floor(secs % 3600 % 60)
+  return ((hours > 0 ? hours + ":" + (mins < 10 ? "0" : "") : "") + mins + ":" + (seconds < 10 ? "0" : "") + seconds)
+}
+
 Home.propTypes = {
   timer: PropTypes.number.isRequired,
   rest: PropTypes.number.isRequired,
@@ -27,8 +34,8 @@ export default function Home (props) {
       <TouchableOpacity onPress={props.onReset}>
         <Text>RESET</Text>
       </TouchableOpacity>
-      <Text>Timer: {props.timer}</Text>
-      <Text>Rest: {props.rest}</Text>
+      <Text>Timer: {secondsToHMS(props.timer)}</Text>
+      <Text>Rest: {secondsToHMS(props.rest)}</Text>
     </View>
   )
 }

@@ -5,12 +5,25 @@ import { Home } from '~/components'
 export default class HomeContainer extends Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    timerDuration: PropTypes.number.isRequired,
+    restDuration: PropTypes.number.isRequired,
   }
   state = {
-    timer: 10,
-    rest: 10,
+    timer: this.props.timerDuration,
+    rest: this.props.restDuration,
     activeCountdown: 'timer',
     countdownRunning: false,
+  }
+  componentWillReceiveProps ({timerDuration, restDuration}) {
+    if (
+      this.props.timerDuration !== timerDuration ||
+      this.props.restDuration !== restDuration
+    ) {
+      this.setState({
+        timer: timerDuration,
+        rest: restDuration,
+      })
+    }
   }
   handleToggleCountdown = () => {
     if (this.state.countdownRunning === true) {
@@ -24,8 +37,8 @@ export default class HomeContainer extends Component {
 
       if (nextSecond === 0) {
         this.setState({
-          [activeCountdown]: 10,
-          activeCountdown: this.state.activeCountdown === 'timer' ? 'rest' : 'timer',
+          [activeCountdown]: activeCountdown === 'timer' ? this.props.timerDuration : this.props.restDuration,
+          activeCountdown: activeCountdown === 'timer' ? 'rest' : 'timer',
         })
       } else {
         this.setState({
@@ -38,13 +51,13 @@ export default class HomeContainer extends Component {
   handleReset = () => {
     window.clearInterval(this.interval)
     this.setState({
-      timer: 10,
+      timer: this.props.timerDuration,
       countdownRunning: false,
     })
   }
   handleSkipRest = () => {
     this.setState({
-      rest: 10,
+      rest: this.props.restDuration,
       activeCountdown: 'timer',
     })
   }
@@ -66,3 +79,14 @@ export default class HomeContainer extends Component {
     )
   }
 }
+
+function mapStateToProps ({settings, authentication}) {
+  return {
+    timerDuration: settings.timerDuration * 60,
+    restDuration: settings.restDuration * 60,
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(HomeContainer)

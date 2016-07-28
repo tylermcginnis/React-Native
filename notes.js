@@ -126,7 +126,7 @@
     - Add initialState to settingsContainer
     - Create handleTimeChange, handleRestChange, onRestComplete, onTimerComplete
     - Pass timerDuration, restDuration, onTimerChange, onRestChange, onRestComplete, and onTimerComplete down to Settings.
-    - Build out UI for both sliders.
+    - Build out UI for both sliders. (ADDED LATER. 1 Minutes shouldnt be a thing.)
     - Add Logout UI to Settings
     - Create handleLogout function in SettingsConatiner and pass it down. Just log logout for now.
 16) Logout
@@ -162,7 +162,7 @@
     - Our onAuthChange function is where our 'init' stuff is going.
     - Create fetchSettings in api/settings.js
     - Add fetchSettings to onAuthChange .then chain
-    - Add another .then which just logs the settings to check it works. If everything is working, export addSettingsTimerDuration and addSettingsRestDuration
+    - Add another .then which just logs the settings to check it works. If everything is working, export addSettingsTimerDuration and addSettingsRestDuration. NOTE** ADDED Later. Move dispatch(isAuthed(uid)) to the END of the chain!!
     - Import them into authentication, then dispatch the updates.
     - Hit refresh, check redux dev tools for dispatches. Check settings view to make sure all is well.
     - Show off offline capabilites of Firebase. Turn off internet. Change settings. Turn on internet.
@@ -180,3 +180,12 @@
     - Create a skip rest function and pass it down.
     - Create a button to test skip rest is working.
     - Talk about the pros and cons of having all this state be in a component rather than in Redux and the final decision to do it.
+20) Connect Home to Redux
+    - Now we need to stop playing around with dummy data and use the real stuff.
+    - Connect HomeContainer to the settings reducer to get the real time values.
+    - Adjust all the dummy vals (10s) in HomeContainer.
+    - In Home.js create a secondsToHMS function
+    - Use it to format the times
+    - Show how everything is working and the times are now formatted.
+    - Go to settings and change the times. Notice how they didn't update in Home. Talk about how getInitialState (or state) isn't going to be called again, but componentWilLReceiveProps will be
+    - add componentWilLReceiveProps to HomeContainer
