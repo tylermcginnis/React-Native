@@ -118,8 +118,8 @@
     - Doesn't feel like. Though that should be default, add in a check for settings then come up from bottom.
     - Show how to check for Platform changes. Add in Android default.
     - Add (default) Navbar to Settings. Run it. Notice there's no way to route back.
-    - Build Cancel.js in Icons
-    - Add Cancel as leftButton in Settings.js
+    - Build Close.js in Icons (THIS IS CANCEL IN THE CODE. CHANGE TO CLOSE!)
+    - Add Close as leftButton in Settings.js
     - Now, notice how the popup is see through? Fix View on Settings.js to be white background.
 15) Settings UI
     - npm installl --save react-native-slider
@@ -144,3 +144,25 @@
     - Build the FlashNotification component
     - Add FlashNotification to root AppContainer and tie of flashNotification redux module to it.
     - To test it out add showFlashNotification to SettingsContainer and show it in handleTimerComplete
+18) Save Settings (using Flash notification)
+    - Need to persist settings to Firebase as well as locally with Redux
+    - Talk about how were going to manage the main durations in Redux but have SettingsContainer have its own state to update the ondrag vals
+    - Create settings.js. Move the initial state from SettingsContainer to settings.
+    - Have state of SettingsContainer be vals from settings. Talk about usually an anti pattern but not in this case.
+    - Create addSettingsRestDuration and addSettingsTimerDuration function in settings (constants and reducer too)
+    - Import those into SettingsContainer and update Redux on one dragging. (Will move to thunks after this, comment out showFlashNotification for now)
+    - Show it working by checking Redux Devtools. Local State + Redux working in harmony.
+    - But now, we need to actually persist this info. Why not use some Thunks?
+    - Create api/settings file and thenc reate setTimer and setRest
+    - In settings.js create handleAndUpdateRest and handleAndUpdateTimer thunks
+    - In SettingsContainer swap out updatesXs with handleAndUpdateXs
+    - Show how firebase is being updated and Redux is being update as well.
+    - BUT! Now we want to tie in the FlashNotification. Add .thens to handle functions. Dont forget to add catches as well
+    - One last issue. If we reset our default redux state isnt whats in Firebase.
+    - Our onAuthChange function is where our 'init' stuff is going.
+    - Create fetchSettings in api/settings.js
+    - Add fetchSettings to onAuthChange .then chain
+    - Add another .then which just logs the settings to check it works. If everything is working, export addSettingsTimerDuration and addSettingsRestDuration
+    - Import them into authentication, then dispatch the updates.
+    - Hit refresh, check redux dev tools for dispatches. Check settings view to make sure all is well.
+    - Show off offline capabilites of Firebase. Turn off internet. Change settings. Turn on internet.

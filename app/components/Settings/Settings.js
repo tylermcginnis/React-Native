@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { ReactModoroNavbar, Cancel } from '~/components'
+import { ReactModoroNavbar, Close } from '~/components'
 import Slider from 'react-native-slider'
 import { LoginButton } from 'react-native-fbsdk'
 import { colors, fontSizes } from '~/styles'
@@ -20,7 +20,7 @@ export default function Settings (props) {
   return (
     <View style={styles.container}>
       <ReactModoroNavbar
-        leftButton={<Cancel onPress={props.onBack}/>}
+        leftButton={<Close onPress={props.onBack}/>}
         title='Settings' />
         <View style={styles.sliderConatiner}>
           <Text style={styles.titleText}>Timer Duration</Text>
