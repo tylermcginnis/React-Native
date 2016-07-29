@@ -170,9 +170,9 @@
     - We need to think of the best way to manage the timer state. First thought is in Redux and dispatch an action every second. Not every efficient.
     - What if we manage the timer state in local component state then just dispatch actions every minute?
     - Create a timer and rest property on state and set them both pretty low to be able to test switching from timer to rest.
-    - Also create activeCountdown on state and set it to timer.
+    - Also create activeCountdown on state and set it to timer and create countdownRunning on the state and set it to false
     - Create handleToggleCountdown and pass it to Home.js
-    - Pass in timer, rest, and activeCountdown to Home
+    - Pass in timer, rest, activeCountdown, and countdownRunning to Home (COUNTDOWN RUNNING ADDED LATER, BUT ADD HERE NOW)
     - Create very basic UI to be able to see the countdown running and also be able to start/stop the countdown.
     - You should be able to start the countdown, and when it hits 0, it switches from timer to rest or rest to timer and repeats.
     - Create a handleReset function and pass it down to Home.
@@ -189,3 +189,30 @@
     - Show how everything is working and the times are now formatted.
     - Go to settings and change the times. Notice how they didn't update in Home. Talk about how getInitialState (or state) isn't going to be called again, but componentWilLReceiveProps will be
     - add componentWilLReceiveProps to HomeContainer
+21) Home UI
+    - Make home look pretty. Change UI based on activeCountdown
+    - Add dynamic background color and container style to Home.js
+    - Create Score, Countdown, ProgressBar, TimerButtons, and SkipRest skeletons
+    - Invoke all of those in Home and pass props to all of those, then add PropTypes (Progress bar requires getProgress in HomeContainer) (As you're adding propTypes use props in the skeleton without good ui)
+    - Show how it's working
+    - Style all Components (Besides Progress Bar)
+    - When you style TimerButtons, do this,
+        Make the UI render
+            <View style={styles.container}>
+              {props.countdownRunning === true
+                ? <Pause onPress={props.onToggle} />
+                : <Play onPress={props.onToggle} />}
+              <Reset onPress={props.onReset}/>
+            </View>
+        then point out that all of them are essentially the same thing just with different icon types and callback functions
+        Refactor to
+            <View style={styles.container}>
+              {props.countdownRunning === true
+                ? <PressableIcon name='ios-pause-outline' onPress={props.onToggle} />
+                : <PressableIcon name='ios-play-outline' onPress={props.onToggle} />}
+              <PressableIcon name='ios-refresh-outline' onPress={props.onReset} />
+            </View>
+        and create the PressableIcon HOC
+    - Click Play, notice slight lag. That's because countdownRunning is waiting until 1 second to switch. Change that in handleToggleCountdown
+    - At this point the UI for home should be done BESIDES the ProgressBar. All functionality works (besides score, obvi)
+X) Add FlashNotification to existing error handlers (see SplashContainer and authentication.js)

@@ -1,18 +1,19 @@
 import React, { PropTypes } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { ReactModoroNavbar, Gear } from '~/components'
-
-function secondsToHMS(secs) {
-  const hours = Math.floor(secs / 3600)
-  const mins = Math.floor(secs % 3600 / 60)
-  const seconds = Math.floor(secs % 3600 % 60)
-  return ((hours > 0 ? hours + ":" + (mins < 10 ? "0" : "") : "") + mins + ":" + (seconds < 10 ? "0" : "") + seconds)
-}
+import Score from './Score'
+import Countdown from './Countdown'
+import ProgressBar from './ProgressBar'
+import TimerButtons from './TimerButtons'
+import SkipRest from './SkipRest'
+import { colors, fontSizes } from '~/styles'
 
 Home.propTypes = {
   timer: PropTypes.number.isRequired,
   rest: PropTypes.number.isRequired,
   activeCountdown: PropTypes.string.isRequired,
+  countdownRunning: PropTypes.bool.isRequired,
+  progress: PropTypes.number.isRequired,
   onToSettings: PropTypes.func.isRequired,
   onToggleCountdown: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
@@ -21,25 +22,30 @@ Home.propTypes = {
 
 export default function Home (props) {
   return (
-    <View>
+    <View style={[styles.container, {backgroundColor: props.activeCountdown === 'timer' ? colors.blue : colors.red}]}>
       <ReactModoroNavbar
         title='Home'
         rightButton={<Gear onPress={props.onToSettings} />}/>
-      <TouchableOpacity onPress={props.onToggleCountdown}>
-        <Text>Toggle</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={props.onSkipRest}>
-        <Text>Skip Rest</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={props.onReset}>
-        <Text>RESET</Text>
-      </TouchableOpacity>
-      <Text>Timer: {secondsToHMS(props.timer)}</Text>
-      <Text>Rest: {secondsToHMS(props.rest)}</Text>
+      <Score count={95} />
+      <Countdown seconds={props[props.activeCountdown]} />
+      <ProgressBar progress={props.progress} />
+      <View style={styles.footer}>
+        {props.activeCountdown === 'timer'
+          ? <TimerButtons countdownRunning={props.countdownRunning} onToggle={props.onToggleCountdown} onReset={props.onReset}/>
+          : <SkipRest onSkipRest={props.onSkipRest}/>}
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-
+  container: {
+    flex: 1,
+  },
+  footer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginBottom: 65,
+  },
 })
