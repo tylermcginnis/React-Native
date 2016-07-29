@@ -28,7 +28,7 @@ export default function Home (props) {
         rightButton={<Gear onPress={props.onToSettings} />}/>
       <Score count={95} />
       <Countdown seconds={props[props.activeCountdown]} />
-      <ProgressBar progress={props.progress} />
+      <ProgressBar progress={props.progress} style={{marginLeft: 20, marginRight: 20}} />
       <View style={styles.footer}>
         {props.activeCountdown === 'timer'
           ? <TimerButtons countdownRunning={props.countdownRunning} onToggle={props.onToggleCountdown} onReset={props.onReset}/>

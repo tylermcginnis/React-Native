@@ -215,4 +215,8 @@
         and create the PressableIcon HOC
     - Click Play, notice slight lag. That's because countdownRunning is waiting until 1 second to switch. Change that in handleToggleCountdown
     - At this point the UI for home should be done BESIDES the ProgressBar. All functionality works (besides score, obvi)
+22) Progress Bar
+    - Build out the ProgressBar component. Talk about the goal is to make it composable.
 X) Add FlashNotification to existing error handlers (see SplashContainer and authentication.js)
+X) Notifications
+X) App Store
