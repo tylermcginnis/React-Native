@@ -217,6 +217,34 @@
     - At this point the UI for home should be done BESIDES the ProgressBar. All functionality works (besides score, obvi)
 22) Progress Bar
     - Build out the ProgressBar component. Talk about the goal is to make it composable.
+23) Scores Module
+    - In separate files model out the Firebase schema for scores and the reasoning for it (denormalized, duplicate data)
+        - /scores is the minimum amount of information we need to render the Leaderboard view. Sure it's very similar to /users right now, but if our application starts adding features, odds are each user will start getting more properties put in their /user/uid endpoint.
+    - In a separate file model out the Redux schema for scores (and now users) and the reasoning for it (normalized, don't duplicate data)
+    - Create and finish the Users module.
+    - Create Scores Module
+        - Add initialState and talk about reasoning. leaderboardUids
+        - Reasoning for scores.usersScores and scores.leaderboardUids, all users aren't on the leaderboard. What if the authed user isn't on the leaderboard? Without .leaderboardUids we would have to go through all the userseScores and sort them then slice them to get the leaderboard. Easier to just keep them separete.
+        - Create fetchingScore() and fetchingScoreSuccess() action creators (with reducer and constant)
+        - Create fetchAndHandleScore thunk
+            - This will lead to creating fetchScore (which leads to scores.js in auth) and fetchUser (auth/users.js).
+            - Finish up fetchAndHandleScore then in onAuthChange .then(() => dispatch(fetchAndHandleScore(uid))) BEFORE isAuthed
+    - Load the app and make sure that FETCHING_SCORE_SUCCESS is called and the score is properly updated in Redux (will be 0)
+    - Point out that were not populating /scores. Reasoning is because we don't want any 0 scores on the leaderboard. Cause that's lame. So if you don't have a score you don't get to be on the leaderboard.
+    - In mapStateToProps of HomeContainer grab the users score and pass it down and replace the dummy date set in Home with the real score
+    - Head back to Scores module and create
+        - updateLeaderboard, addScores, and addListener
+        - Add constants and reducer for each of the three fns above
+    - Now create and finish fetchAndSetScoresListener (LEAVE OFF orderByValue() and limitToLast())
+    - Connect LeaderboardContainer and get isFetching, leaders, and listenerSet from scores module.
+    - Pass isFetching and leaders to Leaderboard
+    - onMount of LeaderboardContainer if listeners not set then fetchAndSetScoreListener
+    - At this point nothing should have really happened since no scores. Go and add some scores (fake IDs and the real authedId and watch Redux)
+    - Talk about how we don't want to show EVERYONE in the leaderboard, just top 15.
+    - add orderByValue() and limitToLast(5) and see the result. Talk about how orderByValue() is for mixing with limittoLast but since objects don't have order so we still need to sort on the client.
+    - Show how everything works.
+X) Update Score as Timer Countsdown
+X) Leaderboard UI
 X) Add FlashNotification to existing error handlers (see SplashContainer and authentication.js)
 X) Notifications
 X) App Store

@@ -3,7 +3,8 @@ import { View, StyleSheet, Text } from 'react-native'
 import { ReactModoroNavbar } from '~/components'
 
 Leaderboard.propTypes = {
-
+  isFetching: PropTypes.bool.isRequired,
+  leaders: PropTypes.array.isRequired,
 }
 
 export default function Leaderboard (props) {

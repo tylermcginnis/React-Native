@@ -1,6 +1,7 @@
 import { getAccessToken, authWithToken, updateUser, logout } from '~/api/auth'
 import { fetchSettings } from '~/api/settings'
 import { addSettingsTimerDuration, addSettingsRestDuration } from '~/redux/modules/settings'
+import { fetchAndHandleScore } from '~/redux/modules/scores'
 
 const AUTHENTICATING = 'AUTHENTICATING'
 const NOT_AUTHED = 'NOT_AUTHED'
@@ -8,7 +9,7 @@ const IS_AUTHED = 'IS_AUTHED'
 export const LOGGING_OUT = 'LOGGING_OUT'
 
 export function onAuthChange (user) {
-  return function (dispatch) {
+  return function (dispatch, getState) {
     if (!user) {
       dispatch(notAuthed())
     } else {
@@ -23,6 +24,7 @@ export function onAuthChange (user) {
         dispatch(addSettingsTimerDuration(settings.timerDuration)),
         dispatch(addSettingsRestDuration(settings.restDuration))
       ]))
+      .then(() => dispatch(fetchAndHandleScore(uid)))
       .then(() => dispatch(isAuthed(uid)))
     }
   }

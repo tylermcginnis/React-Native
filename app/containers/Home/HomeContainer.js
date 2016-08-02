@@ -7,6 +7,7 @@ export default class HomeContainer extends Component {
     navigator: PropTypes.object.isRequired,
     timerDuration: PropTypes.number.isRequired,
     restDuration: PropTypes.number.isRequired,
+    score: PropTypes.number.isRequired,
   }
   state = {
     timer: this.props.timerDuration,
@@ -77,6 +78,7 @@ export default class HomeContainer extends Component {
   render () {
     return (
       <Home
+        score={this.props.score}
         countdownRunning={this.state.countdownRunning}
         timer={this.state.timer}
         rest={this.state.rest}
@@ -90,10 +92,11 @@ export default class HomeContainer extends Component {
   }
 }
 
-function mapStateToProps ({settings, authentication}) {
+function mapStateToProps ({settings, authentication, scores}) {
   return {
     timerDuration: settings.timerDuration * 60,
     restDuration: settings.restDuration * 60,
+    score: scores.usersScores[authentication.authedId],
   }
 }
 

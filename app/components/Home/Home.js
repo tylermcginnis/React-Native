@@ -11,6 +11,7 @@ import { colors, fontSizes } from '~/styles'
 Home.propTypes = {
   timer: PropTypes.number.isRequired,
   rest: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
   activeCountdown: PropTypes.string.isRequired,
   countdownRunning: PropTypes.bool.isRequired,
   progress: PropTypes.number.isRequired,
@@ -26,7 +27,7 @@ export default function Home (props) {
       <ReactModoroNavbar
         title='Home'
         rightButton={<Gear onPress={props.onToSettings} />}/>
-      <Score count={95} />
+      <Score count={props.score} />
       <Countdown seconds={props[props.activeCountdown]} />
       <ProgressBar progress={props.progress} style={{marginLeft: 20, marginRight: 20}} />
       <View style={styles.footer}>
