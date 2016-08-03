@@ -45,7 +45,7 @@
     - Create footerTabs redux module
     - Create FooterTabsContainer
     - Create HomeContainer/Home.js both with Skeletons
-    - Create LeaderboardConatiner/Leaderboard.js both with Skeletons
+    - Create LeaderboardContainer/Leaderboard.js both with Skeletons
     - Create FooterTabs
         - npm install --save react-native-vector-icons
         - react-native link
@@ -236,8 +236,8 @@
         - updateLeaderboard, addScores, and addListener
         - Add constants and reducer for each of the three fns above
     - (UPDATED IN 24)Now create and finish fetchAndSetScoresListener (LEAVE OFF orderByValue() and limitToLast()) (SEE UPDATED VERSION WITH .filter at the end of leaderboardUIDS)
-    - Connect LeaderboardContainer and get isFetching, leaders, and listenerSet from scores module.
-    - Pass isFetching and leaders to Leaderboard
+    - (UPDATED! use listenerSet NOT isFetching ALSO! need score in leaders array. See updated code for connect) Connect LeaderboardContainer and get listenerSet, leaders, and listenerSet from scores module.
+    - Pass listenerSet and leaders to Leaderboard
     - onMount of LeaderboardContainer if listeners not set then fetchAndSetScoreListener
     - At this point nothing should have really happened since no scores. Go and add some scores (fake IDs and the real authedId and watch Redux)
     - Talk about how we don't want to show EVERYONE in the leaderboard, just top 15.
@@ -260,7 +260,20 @@
     - Add increateScore to incrementAndHandleScore and add a .catch
     - Add decreaseScore to decrementAndHandleScore with a .catch as well
     - At this point the timer (and pause and refresh buttons) should be correctly updating the score. Leaderboard should be updating when score changes as well.
-X) Leaderboard UI
+25) Leaderboard UI
+    - Talk about lists in React Native using ListView. You could just map with a <ScrollView>, but ListView is more performant.
+    - Create constructor in LeaderboardContainer and init dataSource
+    - Create renderRow method which just renders rowData as Text (<Text>{JSON.stringify(rowData)}</Text>)
+    - Pass renderRow and dataSource to Leaderboard and add those to propTypes of Leaderboard
+    - Render ListView in Leaderboard.
+    - Point out that becuase we don't set up the listener until we click on the Leaderboard tab, that data won't be immediately available.
+    - Inside Leaderboard render ActivityIndicator with props.listenerSet. Remove this.props.dispatch(fetchAndSetScoreListener()) to see it working.
+    - Now talk about how our Redux store is changing but our component doesn't know about that because when we created the List we didn't have the leaders. Add componentWilLReceiveProps.
+    - At this point the activityindicator should show until the data is there which should puke objects to the view.
+    - Create components/Leaderboard/Leader.js Skeleton
+    - Import Leader into LeaderboardContainer and user that for RenderRow.
+    - Pass in and add propTypes to Leader and show props to view
+    - Style Leader.js
 X) Add FlashNotification to existing error handlers (see SplashContainer and authentication.js)
 X) Android
 X) Notifications
