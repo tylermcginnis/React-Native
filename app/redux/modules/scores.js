@@ -1,13 +1,16 @@
 import { ref } from '~/config/constants'
-import { fetchScore } from '~/api/scores'
+import { fetchScore, increaseScore, decreaseScore } from '~/api/scores'
 import { addMultipleUsers, addUser } from '~/redux/modules/users'
 import { fetchUser } from '~/api/users'
+import { showFlashNotification } from '~/redux/modules/flashNotification'
 
 const FETCHING_SCORE = 'FETCHING_SCORE'
 const FETCHING_SCORE_SUCCESS = 'FETCHING_SCORE_SUCCESS'
 const UPDATE_LEADERBOARD = 'UPDATE_LEADERBOARD'
 const ADD_LISTENER = 'ADD_LISTENER'
 const ADD_SCORES = 'ADD_SCORES'
+const INCREMENT_SCORE = 'INCREMENT_SCORE'
+const DECREMENT_SCORE = 'DECREMENT_SCORE'
 
 function fetchingScore () {
   return {
@@ -43,15 +46,54 @@ function addListener () {
   }
 }
 
+function incrementScore (uid, amount) {
+  return {
+    type: INCREMENT_SCORE,
+    amount,
+    uid,
+  }
+}
+
+function decrementScore (uid, amount) {
+  return {
+    type: DECREMENT_SCORE,
+    amount,
+    uid,
+  }
+}
+
+export function incrementAndHandleScore (amount) {
+  return function (dispatch, getState) {
+    const { authedId } = getState().authentication
+    dispatch(incrementScore(authedId, amount))
+    increaseScore(authedId, amount)
+      .catch((error) => {
+        dispatch(showFlashNotification({text: 'Error updating your score'}))
+        dispatch(decrementScore(authedId, amount))
+      })
+  }
+}
+
+export function decrementAndHandleScore (amount) {
+  return function (dispatch, getState) {
+    const { authedId } = getState().authentication
+    dispatch(decrementScore(authedId, amount))
+    decreaseScore(authedId, amount)
+      .catch((error) => {
+        dispatch(showFlashNotification({text: 'Error updating your score'}))
+        dispatch(decrementScore(authedId, amount))
+      })
+  }
+}
+
 export function fetchAndHandleScore (uid) {
   return function (dispatch, getState)  {
     dispatch(fetchingScore())
     return fetchScore(uid)
       .then((scoreInfo) => {
-        const { users } = getState()
-        dispatch(fetchingScoreSuccess(uid, scoreInfo === null ? 0 : scoreInfo.score))
+        dispatch(fetchingScoreSuccess(uid, !scoreInfo || !scoreInfo.score ? 0 : scoreInfo.score))
 
-        return typeof users[uid] === 'undefined'
+        return typeof getState().users[uid] === 'undefined'
           ? fetchUser(uid).then((user) => dispatch(addUser(uid, user)))
           : Promise.resolve()
       })
@@ -69,6 +111,7 @@ export function fetchAndSetScoreListener () {
         const leaderboard = snapshot.val() || {}
         const leaderboardUids = Object.keys(leaderboard)
           .sort((a,b) => leaderboard[b].score - leaderboard[a].score)
+          .filter((uid) => !!leaderboard[uid].score || leaderboard[uid].score > 0)
 
         const { scores, users } = leaderboardUids.reduce((prev, uid) => {
           prev.scores[uid] = leaderboard[uid].score
@@ -104,6 +147,16 @@ function usersScores (state = {}, action) {
         ...state,
         ...action.scores,
       }
+    case INCREMENT_SCORE :
+      return {
+        ...state,
+        [action.uid]: state[action.uid] + action.amount
+      }
+    case DECREMENT_SCORE :
+      return {
+        ...state,
+        [action.uid]: state[action.uid] - action.amount
+      }
     default :
       return state
   }
@@ -134,6 +187,8 @@ export default function scores (state = initialState, action) {
         ...state,
         leaderboardUids: action.uids,
       }
+    case INCREMENT_SCORE :
+    case DECREMENT_SCORE :
     case ADD_SCORES :
       return {
         ...state,

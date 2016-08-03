@@ -230,12 +230,12 @@
             - This will lead to creating fetchScore (which leads to scores.js in auth) and fetchUser (auth/users.js).
             - Finish up fetchAndHandleScore then in onAuthChange .then(() => dispatch(fetchAndHandleScore(uid))) BEFORE isAuthed
     - Load the app and make sure that FETCHING_SCORE_SUCCESS is called and the score is properly updated in Redux (will be 0)
-    - Point out that were not populating /scores. Reasoning is because we don't want any 0 scores on the leaderboard. Cause that's lame. So if you don't have a score you don't get to be on the leaderboard.
     - In mapStateToProps of HomeContainer grab the users score and pass it down and replace the dummy date set in Home with the real score
+    - (NEW NOT IN ORIGINAL COMMIT) Point out how we're duplicating the users data. If we do this we have to make sure we keep that data in sync. So when we call updateUser() onAuthChange, we also want to update (or add) that users info to scores. In auth.js, add ref.child(`scores/${user.uid}`).update(user) to updateUser() and return Promise.all
     - Head back to Scores module and create
         - updateLeaderboard, addScores, and addListener
         - Add constants and reducer for each of the three fns above
-    - Now create and finish fetchAndSetScoresListener (LEAVE OFF orderByValue() and limitToLast())
+    - (UPDATED IN 24)Now create and finish fetchAndSetScoresListener (LEAVE OFF orderByValue() and limitToLast()) (SEE UPDATED VERSION WITH .filter at the end of leaderboardUIDS)
     - Connect LeaderboardContainer and get isFetching, leaders, and listenerSet from scores module.
     - Pass isFetching and leaders to Leaderboard
     - onMount of LeaderboardContainer if listeners not set then fetchAndSetScoreListener
@@ -243,8 +243,25 @@
     - Talk about how we don't want to show EVERYONE in the leaderboard, just top 15.
     - add orderByValue() and limitToLast(5) and see the result. Talk about how orderByValue() is for mixing with limittoLast but since objects don't have order so we still need to sort on the client.
     - Show how everything works.
-X) Update Score as Timer Countsdown
+24) Update Score as Timer Countsdown
+    - Talk about how the point system will work
+        +1 pt for every minute
+        -5 pts on restart
+        -5 pts for pausing
+        +5 pts for finishing
+    - Talk about how since we're listening to "Scores" we don't need to worry about updating the leaderboard in Redux, but we still need to worry about updating the local users score (since they may not be on the Leaderboard)
+    - Create incrementScore and decrementScore inside of scores.js with constants and reducer.
+    - Create incrementAndHandleScore. Talk about the tradeoff between passing in uid or getting it from getState. I chose getState because with our app the way it is, we'll never need to modify someone else's score, just the authed users. Other option would be connecting HomeContainer to authedId and passing the uid into incrementAndHandleScore
+    - Have incrementAndHandleScore just dispatch(incrementScore(authedId, amount)) for now. Go and add it to HomeContainer where it should be (two places) and verify it's working by updating locally for now.
+    - Do the same thing with decrementAndHandleScore (working locally only)
+    - Now you should (locally only) lose 5 points for pausing and restarting. Gain 1 point for every minute. Gain 5 points for finishing. Verify this is working.
+    - Talk about optimistic updates. We're updating locally assuming the firebase req will success. If it doesn't, readd back the time.
+    - Create increaseScore and decreaseScore in api/scores.js and import those into modules/scores.js
+    - Add increateScore to incrementAndHandleScore and add a .catch
+    - Add decreaseScore to decrementAndHandleScore with a .catch as well
+    - At this point the timer (and pause and refresh buttons) should be correctly updating the score. Leaderboard should be updating when score changes as well.
 X) Leaderboard UI
 X) Add FlashNotification to existing error handlers (see SplashContainer and authentication.js)
+X) Android
 X) Notifications
 X) App Store

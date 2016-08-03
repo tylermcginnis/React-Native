@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { Home } from '~/components'
+import { incrementAndHandleScore, decrementAndHandleScore } from '~/redux/modules/scores'
 
 export default class HomeContainer extends Component {
   static propTypes = {
@@ -29,6 +30,7 @@ export default class HomeContainer extends Component {
   handleToggleCountdown = () => {
     if (this.state.countdownRunning === true) {
       this.setState({countdownRunning: false})
+      this.props.dispatch(decrementAndHandleScore(5))
       return window.clearInterval(this.interval)
     }
 
@@ -45,10 +47,15 @@ export default class HomeContainer extends Component {
           [activeCountdown]: activeCountdown === 'timer' ? this.props.timerDuration : this.props.restDuration,
           activeCountdown: activeCountdown === 'timer' ? 'rest' : 'timer',
         })
+        this.props.dispatch(incrementAndHandleScore(5))
       } else {
         this.setState({
           [activeCountdown]: nextSecond,
         })
+      }
+
+      if (nextSecond % 60 === 0) {
+        this.props.dispatch(incrementAndHandleScore(1))
       }
     }, 1000)
   }
@@ -58,6 +65,7 @@ export default class HomeContainer extends Component {
       timer: this.props.timerDuration,
       countdownRunning: false,
     })
+    this.props.dispatch(decrementAndHandleScore(5))
   }
   handleSkipRest = () => {
     this.setState({
