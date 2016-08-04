@@ -274,7 +274,9 @@
     - Import Leader into LeaderboardContainer and user that for RenderRow.
     - Pass in and add propTypes to Leader and show props to view
     - Style Leader.js
-X) Add FlashNotification to existing error handlers (see SplashContainer and authentication.js)
 X) Android
 X) Notifications
+X) App Store Prep
+    - Splash Screen
+    - Icons
 X) App Store
