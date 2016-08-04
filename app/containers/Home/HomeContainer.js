@@ -29,6 +29,9 @@ export default class HomeContainer extends Component {
       })
     }
   }
+  componentWillUnmount () {
+    window.clearInterval(this.interval)
+  }
   handleToggleCountdown = () => {
     if (this.state.countdownRunning === true) {
       this.setState({countdownRunning: false})

@@ -277,7 +277,7 @@
     - Import Leader into LeaderboardContainer and user that for RenderRow.
     - Pass in and add propTypes to Leader and show props to view
     - Style Leader.js
-Fit In) Android Drawyer Stuff + FooterTabs.android.js Skeleton
+Fit In) Android Styling
 
 X) Android
 X) Notifications
