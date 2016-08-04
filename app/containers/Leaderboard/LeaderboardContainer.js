@@ -9,6 +9,7 @@ class LeaderboardContainer extends Component {
     listenerSet: PropTypes.bool.isRequired,
     leaders: PropTypes.array.isRequired,
     listenerSet: PropTypes.bool.isRequired,
+    openDrawer: PropTypes.func,
   }
   constructor (props) {
     super(props)
@@ -40,7 +41,8 @@ class LeaderboardContainer extends Component {
         renderRow={this.renderRow}
         dataSource={this.state.dataSource}
         listenerSet={this.props.listenerSet}
-        leaders={this.props.leaders} />
+        leaders={this.props.leaders}
+        openDrawer={this.props.openDrawer} />
     )
   }
 }

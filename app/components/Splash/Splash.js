@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Image, Text } from 'react-native'
+import { View, StyleSheet, Image, Text, Dimensions } from 'react-native'
 import { LoginButton } from 'react-native-fbsdk'
 import { colors, fontSizes } from '~/styles'
+const { height } = Dimensions.get('window')
 
 Splash.propTypes = {
   onLoginFinished: PropTypes.func.isRequired,
@@ -10,13 +11,15 @@ Splash.propTypes = {
 export default function Splash (props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.slogan}>ReactModoro</Text>
-      <Image style={styles.image} source={require('../../images/logo.png')}/>
+      <View>
+        <Image style={styles.image} source={require('../../images/logo.png')}/>
+        <Text style={styles.slogan}>ReactModoro</Text>
+      </View>
       <View style={styles.loginContainer}>
         <LoginButton
           style= {{
-            height: 45,
-            width: 256,
+            height: 30,
+            width: 180,
             marginBottom: 15,
           }}
           onLoginFinished={props.onLoginFinished}
@@ -37,26 +40,27 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: 80,
+    paddingTop: 50,
+    paddingBottom: 40,
   },
   slogan: {
     color: colors.blue,
     fontSize: 40,
+    margin: 20,
+    textAlign: 'center',
   },
   image: {
     resizeMode: 'contain',
-    height: 300,
-    alignSelf: 'center',
+    height: height * .4 > 300 ? 300 : height * .4,
   },
   loginContainer: {
-    margin: 40,
-    padding: 10,
-    marginBottom: 5,
+    paddingLeft: 30,
+    paddingRight: 30,
+    alignItems: 'center',
   },
   assuranceText: {
     color: colors.secondary,
     fontSize: fontSizes.secondary,
-    marginTop: 10,
     textAlign: 'center',
   },
 })

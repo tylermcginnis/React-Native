@@ -29,6 +29,7 @@
       - Center image first (SFC first)
       - Add animations (Switch to Class)
 7) Splash UI
+    - ((UPDATES FOR THIS STEP. CHECK FINAL SOLUTION))
     - Remove isAuthenticating defaultProps from AppContainer
     - Build out UI for Splash.js
     - SplashContainer Changes
@@ -98,6 +99,7 @@
     - Just have ReactModoroNavbar render a tabbar with a title and show it working on Home.js (first with just title={{title: 'Hello!'}}) then add in tintColor, then add in title through props
     - Now add Navbar to Leaderboard tab.
     - Now talk about how we want a more dynamic Navbar with forward and back buttons.
+    - ((((((THIS CODE HAS CHANGED. CHECK THE UPDATED VERSION))))))
     - Add leftButton to ReactModoroNavbar which uses React.cloneElement passing in style
     - Add rightButton which does the same as leftButton
     - Add a Gear right button to Home
@@ -190,6 +192,7 @@
     - Go to settings and change the times. Notice how they didn't update in Home. Talk about how getInitialState (or state) isn't going to be called again, but componentWilLReceiveProps will be
     - add componentWilLReceiveProps to HomeContainer
 21) Home UI
+    - THIS STEP HAS ONE VERY SMALL CHANGE. IN SCORE.JS USE MARGIN: 10 INSTEAD OF PADDING: 10. PADDING IS BORK on ANDROID FOR SOME REASON
     - Make home look pretty. Change UI based on activeCountdown
     - Add dynamic background color and container style to Home.js
     - Create Score, Countdown, ProgressBar, TimerButtons, and SkipRest skeletons
@@ -274,9 +277,12 @@
     - Import Leader into LeaderboardContainer and user that for RenderRow.
     - Pass in and add propTypes to Leader and show props to view
     - Style Leader.js
+Fit In) Android Drawyer Stuff + FooterTabs.android.js Skeleton
+
 X) Android
 X) Notifications
 X) App Store Prep
     - Splash Screen
     - Icons
+    - Restrict Landscape
 X) App Store

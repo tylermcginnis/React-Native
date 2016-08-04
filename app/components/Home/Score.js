@@ -16,7 +16,7 @@ export default function Score (props) {
 
 const styles = StyleSheet.create({
   containerText: {
-    padding: 10,
+    margin: 10,
     alignSelf: 'stretch',
     color: colors.white,
     fontSize: fontSizes.secondary,

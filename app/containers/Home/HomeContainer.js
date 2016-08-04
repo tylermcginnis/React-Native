@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react'
+import { Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { Home } from '~/components'
 import { incrementAndHandleScore, decrementAndHandleScore } from '~/redux/modules/scores'
@@ -9,6 +10,7 @@ export default class HomeContainer extends Component {
     timerDuration: PropTypes.number.isRequired,
     restDuration: PropTypes.number.isRequired,
     score: PropTypes.number.isRequired,
+    openDrawer: PropTypes.func,
   }
   state = {
     timer: this.props.timerDuration,
@@ -86,6 +88,7 @@ export default class HomeContainer extends Component {
   render () {
     return (
       <Home
+        openDrawer={this.props.openDrawer}
         score={this.props.score}
         countdownRunning={this.state.countdownRunning}
         timer={this.state.timer}

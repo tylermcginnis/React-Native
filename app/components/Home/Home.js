@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { ReactModoroNavbar, Gear } from '~/components'
+import { View, StyleSheet, Text, TouchableOpacity, Platform } from 'react-native'
+import { ReactModoroNavbar, Gear, Hamburger } from '~/components'
 import Score from './Score'
 import Countdown from './Countdown'
 import ProgressBar from './ProgressBar'
@@ -19,6 +19,7 @@ Home.propTypes = {
   onToggleCountdown: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   onSkipRest: PropTypes.func.isRequired,
+  openDrawer: PropTypes.func,
 }
 
 export default function Home (props) {
@@ -26,6 +27,7 @@ export default function Home (props) {
     <View style={[styles.container, {backgroundColor: props.activeCountdown === 'timer' ? colors.blue : colors.red}]}>
       <ReactModoroNavbar
         title='Home'
+        leftButton={Platform.OS === 'android' ? <Hamburger onPress={props.openDrawer}/> : null}
         rightButton={<Gear onPress={props.onToSettings} />}/>
       <Score count={props.score} />
       <Countdown seconds={props[props.activeCountdown]} />

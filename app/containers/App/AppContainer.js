@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import { View } from 'react-native'
+import { View, StatusBar } from 'react-native'
 import { connect } from 'react-redux'
 import { ReactModoroNavigator } from '~/containers'
 import { PreSplash, FlashNotification } from '~/components'
