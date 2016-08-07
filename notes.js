@@ -282,7 +282,9 @@ Fit In) Android Styling
 X) Android
 X) Notifications
 X) App Store Prep
-    - Splash Screen
+    - Launch Screen
     - Icons
     - Restrict Landscape
 X) App Store
+    - Build for Prod.
+    - Submit to App Store
