@@ -24,13 +24,13 @@
       - Verify both are still working
       - install babel-preset-react-native-stage-0 & babel-root-import
       - Set up custom .babelrc file for better imports with ~
-4) Adding the Facebook SDK
+5) Adding the Facebook SDK
     Text:
       - Adding the Facebook SDK to a React Native app
     Videp:
       - Follow Steps in fbsdksteps.js file
       - Show LoginButton on app/index.js file
-5) Routing and Navigation with React Native
+6) Routing and Navigation with React Native
     Commit: https://github.com/ReactjsProgram/React-Native/commit/166a9c13542829fe365305364ea4ff1f094ab3d8
     Text:
       - A Living Guide to Routing and Navigation in React Native (BLOG)
@@ -41,7 +41,7 @@
       - Make sure SplashContainer/Splash work by rendering SplashContainer in AppContainer
       - Create ReactModoroNavigator w/ renderScene and configureScene
       - In AppContainer render ReactModoroNavigator instead of SplashContainer
-6) Pre-Splash UI
+7) Pre-Splash UI
     Commit: https://github.com/ReactjsProgram/React-Native/commit/60d31b58dd667f2df88ca922d835e82ee9758ee2
     Text
       - React Native Animated 101 (BLOG)
@@ -52,14 +52,14 @@
       - Build out UI for PreSplash
         - Center image first (SFC first)
         - Add animations (Switch to Class)
-7) Splash UI
+8) Splash UI
     Commit: https://github.com/ReactjsProgram/React-Native/commit/02c168a6ddb024be1ba1033a6d594dc900cf02d8
     Changed: true
     Video:
       - Remove isAuthenticating defaultProps from AppContainer
       - Build out UI for Splash.js
       - SplashContainer Changes
-8) Add Redux
+9) Add Redux
     Commit: https://github.com/ReactjsProgram/React-Native/commit/29eccbd7f913f90e74dedb898f33c906502034ae
     Text:
       - React Native + Redux. Why they're nice together. (BLOG)
@@ -70,7 +70,7 @@
       - Add Redux & friends to /app/index.js
       - Connect AppContainer and get isAuthenticating
       - Change initialState of authentication.isAuthenticating and see how the view changes
-9) FooterTabs in iOS
+10) FooterTabs in iOS
     Commit: https://github.com/ReactjsProgram/React-Native/commit/da27e2c209927b4481318572176ca171635a6808#diff-1b4ec231b45d125741b75516ffaad566R3
     Text:
       - Something along the lines of the difference in routing between iOS and Android. TabBarIOS vs DrawerLayoutAndroid and preparing your codebase for both.
@@ -91,11 +91,11 @@
           - The rest
       - In ReactModoroNavigator render FooterTabsContainer instead of SplashContainer
       - Toggle between tabs. Walk through whole flow again.
-10) DrawerLayoutAndroid in Android
+11) DrawerLayoutAndroid in Android
       Commit: (Mixed in here) https://github.com/ReactjsProgram/React-Native/commit/97d1daf48a30b7cfd4421b289ad348ce201067cc
       Video:
         - Integrate DrawerLayoutAndroid (no hamburger yet)
-11) Remote Redux DevTools
+12) Remote Redux DevTools
       Commit: https://github.com/ReactjsProgram/React-Native/commit/c9f7f1e66f3310a6ed4687eee669652cdeefbf87
       Text:
         - Adding ReduxDevtools to your React Native app (BLOG)
@@ -104,7 +104,7 @@
         - Add devTools() to app/index.js
         - If dont have, download redux-devtools-extension https://github.com/zalmoxisus/redux-devtools-extension
         - Show how Remote Redux Devtools works (CMD + CTRL + Up)
-12) Autentication
+13) Autentication
       Commit: https://github.com/ReactjsProgram/React-Native/commit/b31b9d17741455fab39baa74ae06f736a64ccd46
       Changed: true (Some small changes in next commit)
       Text:
@@ -137,14 +137,14 @@
         - Fill out onAuthChange
         - At this point show the Redux flow in ReduxDevTools. App loads, default state is correct with authentication.isAuthenticating to true, NOT_AUTHED happens and then authentication.isAuthenticating goes to false.
         - Authenticate. Should be redireced to Home. Hit refresh, should get ShakeyLogo -> Home. Nice.
-13) Save User
+14) Save User
       Commit: https://github.com/ReactjsProgram/React-Native/commit/82d37c97bd3876464bde0a42daca6282991a020f
       Video:
         - Explain how firebase auths for you but doesnt save the user for you. So whenever we auth we want to save that user.
         - Create updateUser in auth.js
         - import updateUser into authentication
         - Call updateUser in onAuthChange then dispatch isAuthed. (Show this working by having firebase console open)
-14) Navbar
+15) Navbar
       Commit: https://github.com/ReactjsProgram/React-Native/commit/702d437ed3f5e9302be7a31d5ca5bad43f827d97
       changed: true
       Video:
@@ -162,7 +162,7 @@
             - Create Gear.js
             - Import Gear into Home and add it as a rightButton. Show how it's showing but not aligned. Add styling
             - Click Gar. Show how it works. Talk about how now whenever we use ReactModoroNavbar we can easily add a left or right button.
-15) Gear Route
+16) Gear Route
       Commit: https://github.com/ReactjsProgram/React-Native/commit/61ae17d6e55e0a69b2b49492334fb33e4e3c1c61
       Video:
         - Build out the skeleton for the Settings route so clicking on the gear does more than console.log (Also really show how routing works)
@@ -180,7 +180,7 @@
         - Build Close.js in Icons (THIS IS CANCEL IN THE CODE. CHANGE TO CLOSE!)
         - Add Close as leftButton in Settings.js
         - Now, notice how the popup is see through? Fix View on Settings.js to be white background.
-16) Settings UI
+17) Settings UI
       Commit: https://github.com/ReactjsProgram/React-Native/commit/1aa2b2d3c19910d340b117dbf2adf33854c62ed4
       Video:
         - npm installl --save react-native-slider
@@ -190,7 +190,7 @@
         - Build out UI for both sliders. (ADDED LATER. 1 Minutes shouldnt be a thing.)
         - Add Logout UI to Settings
         - Create handleLogout function in SettingsConatiner and pass it down. Just log logout for now.
-17) Logout
+18) Logout
       Commit: https://github.com/ReactjsProgram/React-Native/commit/b66f53e07fb04b14508e1cb1c1f661d5fd45ecd1
       Video:
         - Add logout to auth.js
@@ -201,7 +201,7 @@
         - In createStore pass in rootReducer
         - update handleLogout in SettingsContainer to call authentication.handleUnauth
         - Logout. Profit.
-18) Flash Notification
+19) Flash Notification
       Commit: https://github.com/ReactjsProgram/React-Native/commit/76d1c7700aa08db528ffa92af7d5d383355578ad
       Video:
         - We need a way to give the user feedback for certain actions. One good way is with a Flash Notification.
@@ -209,7 +209,7 @@
         - Build the FlashNotification component
         - Add FlashNotification to root AppContainer and tie of flashNotification redux module to it.
         - To test it out add showFlashNotification to SettingsContainer and show it in handleTimerComplete
-19) Save Settings (using Flash notification)
+20) Save Settings (using Flash notification)
       Commit: https://github.com/ReactjsProgram/React-Native/commit/c2eae066437af653c565d78005dabaff4e62437b
       Video:
         - Need to persist settings to Firebase as well as locally with Redux
@@ -233,7 +233,7 @@
         - Import them into authentication, then dispatch the updates.
         - Hit refresh, check redux dev tools for dispatches. Check settings view to make sure all is well.
         - Show off offline capabilites of Firebase. Turn off internet. Change settings. Turn on internet.
-20) Timer State
+21) Timer State
       Commit: https://github.com/ReactjsProgram/React-Native/commit/91288654245978a9737f5cb84ae5946218f3d9ad
       Changed: true
       Video:
@@ -250,7 +250,7 @@
         - Create a skip rest function and pass it down.
         - Create a button to test skip rest is working.
         - Talk about the pros and cons of having all this state be in a component rather than in Redux and the final decision to do it.
-21) Connect Home to Redux
+22) Connect Home to Redux
       Commit: https://github.com/ReactjsProgram/React-Native/commit/74ee7ea04cf129f75a43e3bbc3be3dd697095b99
       Video:
         - Now we need to stop playing around with dummy data and use the real stuff.
@@ -261,7 +261,7 @@
         - Show how everything is working and the times are now formatted.
         - Go to settings and change the times. Notice how they didn't update in Home. Talk about how getInitialState (or state) isn't going to be called again, but componentWilLReceiveProps will be
         - add componentWilLReceiveProps to HomeContainer
-22) Home UI
+23) Home UI
     Commit: https://github.com/ReactjsProgram/React-Native/commit/7ddfcaeb106cddefee973638474668034b023dc6
     Changed: true (THIS STEP HAS ONE VERY SMALL CHANGE. IN SCORE.JS USE MARGIN: 10 INSTEAD OF PADDING: 10. PADDING IS BORK on ANDROID FOR SOME REASON)
     Video:
@@ -290,41 +290,41 @@
           and create the PressableIcon HOC
       - Click Play, notice slight lag. That's because countdownRunning is waiting until 1 second to switch. Change that in handleToggleCountdown
       - At this point the UI for home should be done BESIDES the ProgressBar. All functionality works (besides score, obvi)
-23) Progress Bar
+24) Progress Bar
       Commit: https://github.com/ReactjsProgram/React-Native/commit/562d52ba6292dbc53f95d506a69997f6e614c328
       changes: true (in Step 25)
       Video:
         - Build out the ProgressBar component. Talk about the goal is to make it composable.
-24) Scores Module
+25) Scores Module
       Commit: https://github.com/ReactjsProgram/React-Native/commit/eb35563d799861e73799c470afdc6a39129a3d35
       Changed: true
       Video:
-      - In separate files model out the Firebase schema for scores and the reasoning for it (denormalized, duplicate data)
-          - /scores is the minimum amount of information we need to render the Leaderboard view. Sure it's very similar to /users right now, but if our application starts adding features, odds are each user will start getting more properties put in their /user/uid endpoint.
-      - In a separate file model out the Redux schema for scores (and now users) and the reasoning for it (normalized, don't duplicate data)
-      - Create and finish the Users module.
-      - Create Scores Module
-          - Add initialState and talk about reasoning. leaderboardUids
-          - Reasoning for scores.usersScores and scores.leaderboardUids, all users aren't on the leaderboard. What if the authed user isn't on the leaderboard? Without .leaderboardUids we would have to go through all the userseScores and sort them then slice them to get the leaderboard. Easier to just keep them separete.
-          - Create fetchingScore() and fetchingScoreSuccess() action creators (with reducer and constant)
-          - Create fetchAndHandleScore thunk
-              - This will lead to creating fetchScore (which leads to scores.js in auth) and fetchUser (auth/users.js).
-              - Finish up fetchAndHandleScore then in onAuthChange .then(() => dispatch(fetchAndHandleScore(uid))) BEFORE isAuthed
-      - Load the app and make sure that FETCHING_SCORE_SUCCESS is called and the score is properly updated in Redux (will be 0)
-      - In mapStateToProps of HomeContainer grab the users score and pass it down and replace the dummy date set in Home with the real score
-      - (NEW NOT IN ORIGINAL COMMIT) Point out how we're duplicating the users data. If we do this we have to make sure we keep that data in sync. So when we call updateUser() onAuthChange, we also want to update (or add) that users info to scores. In auth.js, add ref.child(`scores/${user.uid}`).update(user) to updateUser() and return Promise.all
-      - Head back to Scores module and create
-          - updateLeaderboard, addScores, and addListener
-          - Add constants and reducer for each of the three fns above
-      - (UPDATED IN 24)Now create and finish fetchAndSetScoresListener (LEAVE OFF orderByValue() and limitToLast()) (SEE UPDATED VERSION WITH .filter at the end of leaderboardUIDS)
-      - (UPDATED! use listenerSet NOT isFetching ALSO! need score in leaders array. See updated code for connect) Connect LeaderboardContainer and get listenerSet, leaders, and listenerSet from scores module.
-      - Pass listenerSet and leaders to Leaderboard
-      - onMount of LeaderboardContainer if listeners not set then fetchAndSetScoreListener
-      - At this point nothing should have really happened since no scores. Go and add some scores (fake IDs and the real authedId and watch Redux)
-      - Talk about how we don't want to show EVERYONE in the leaderboard, just top 15.
-      - add orderByValue() and limitToLast(5) and see the result. Talk about how orderByValue() is for mixing with limittoLast but since objects don't have order so we still need to sort on the client.
-      - Show how everything works.
-25) Update Score as Timer Countsdown
+        - In separate files model out the Firebase schema for scores and the reasoning for it (denormalized, duplicate data)
+            - /scores is the minimum amount of information we need to render the Leaderboard view. Sure it's very similar to /users right now, but if our application starts adding features, odds are each user will start getting more properties put in their /user/uid endpoint.
+        - In a separate file model out the Redux schema for scores (and now users) and the reasoning for it (normalized, don't duplicate data)
+        - Create and finish the Users module.
+        - Create Scores Module
+            - Add initialState and talk about reasoning. leaderboardUids
+            - Reasoning for scores.usersScores and scores.leaderboardUids, all users aren't on the leaderboard. What if the authed user isn't on the leaderboard? Without .leaderboardUids we would have to go through all the userseScores and sort them then slice them to get the leaderboard. Easier to just keep them separete.
+            - Create fetchingScore() and fetchingScoreSuccess() action creators (with reducer and constant)
+            - Create fetchAndHandleScore thunk
+                - This will lead to creating fetchScore (which leads to scores.js in auth) and fetchUser (auth/users.js).
+                - Finish up fetchAndHandleScore then in onAuthChange .then(() => dispatch(fetchAndHandleScore(uid))) BEFORE isAuthed
+        - Load the app and make sure that FETCHING_SCORE_SUCCESS is called and the score is properly updated in Redux (will be 0)
+        - In mapStateToProps of HomeContainer grab the users score and pass it down and replace the dummy date set in Home with the real score
+        - (NEW. NOT IN ORIGINAL COMMIT) Point out how we're duplicating the users data. If we do this we have to make sure we keep that data in sync. So when we call updateUser() onAuthChange, we also want to update (or add) that users info to scores. In auth.js, add ref.child(`scores/${user.uid}`).update(user) to updateUser() and return Promise.all
+        - Head back to Scores module and create
+            - updateLeaderboard, addScores, and addListener
+            - Add constants and reducer for each of the three fns above
+        - (UPDATED IN 24)Now create and finish fetchAndSetScoresListener (LEAVE OFF orderByValue() and limitToLast()) (SEE UPDATED VERSION WITH .filter at the end of leaderboardUIDS)
+        - (UPDATED! use listenerSet NOT isFetching ALSO! need score in leaders array. See updated code for connect) Connect LeaderboardContainer and get listenerSet, leaders, and listenerSet from scores module.
+        - Pass listenerSet and leaders to Leaderboard
+        - onMount of LeaderboardContainer if listeners not set then fetchAndSetScoreListener
+        - At this point nothing should have really happened since no scores. Go and add some scores (fake IDs and the real authedId and watch Redux)
+        - Talk about how we don't want to show EVERYONE in the leaderboard, just top 15.
+        - add orderByValue() and limitToLast(5) and see the result. Talk about how orderByValue() is for mixing with limittoLast but since objects don't have order so we still need to sort on the client.
+        - Show how everything works.
+26) Update Score as Timer Countsdown
       Commit: https://github.com/ReactjsProgram/React-Native/commit/5ff218e0a436538adca89f143bf7c1023959b840
       Video:
         - Talk about how the point system will work
@@ -343,7 +343,8 @@
         - Add increateScore to incrementAndHandleScore and add a .catch
         - Add decreaseScore to decrementAndHandleScore with a .catch as well
         - At this point the timer (and pause and refresh buttons) should be correctly updating the score. Leaderboard should be updating when score changes as well.
-26) Leaderboard UI
+        - (UPDATE): Add clearInterval to componentWillUnmount of HomeContainer or else throws errors in android.
+27) Leaderboard UI
       Commit: https://github.com/ReactjsProgram/React-Native/commit/9377c391cee9a87ae5f786899dd9ea3f631719e6
       Video:
         - Talk about lists in React Native using ListView. You could just map with a <ScrollView>, but ListView is more performant.
@@ -359,12 +360,12 @@
         - Import Leader into LeaderboardContainer and user that for RenderRow.
         - Pass in and add propTypes to Leader and show props to view
         - Style Leader.js
-27) App Store Prep
+28) App Store Prep
       Commit: https://github.com/ReactjsProgram/React-Native/commit/3cb3b5c9d8ae95ac2c04dc2761faa2fd706399f2
       Text:
         Preparing a React Native App for the App Store: Launch Screen, Rotation, App Icons, and Publishing
       Video:
         See LaunchScreenNotes-Rotation-AppIcons-Notes.js
-28) App Store
+29) App Store
       Video:
         Submit to the App Store
