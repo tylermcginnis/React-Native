@@ -75,7 +75,7 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
       - Add Redux & friends to /app/index.js
       - Connect AppContainer and get isAuthenticating
       - Change initialState of authentication.isAuthenticating and see how the view changes
-10) FooterTabs in iOS
+10) React Native iOS Footer Tabs
     Commit: https://github.com/ReactjsProgram/React-Native/commit/da27e2c209927b4481318572176ca171635a6808#diff-1b4ec231b45d125741b75516ffaad566R3
     Text:
       - Something along the lines of the difference in routing between iOS and Android. TabBarIOS vs DrawerLayoutAndroid and preparing your codebase for both.
@@ -96,11 +96,11 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
           - The rest
       - In ReactModoroNavigator render FooterTabsContainer instead of SplashContainer
       - Toggle between tabs. Walk through whole flow again.
-11) DrawerLayoutAndroid in Android
+11) React Native Android: DrawerLayoutAndroid
       Commit: (Mixed in here) https://github.com/ReactjsProgram/React-Native/commit/97d1daf48a30b7cfd4421b289ad348ce201067cc
       Video:
         - Integrate DrawerLayoutAndroid (no hamburger yet)
-12) Remote Redux DevTools
+12) Remote Redux DevTools with React Native
       Commit: https://github.com/ReactjsProgram/React-Native/commit/c9f7f1e66f3310a6ed4687eee669652cdeefbf87
       Text:
         - Adding ReduxDevtools to your React Native app (BLOG)
@@ -109,11 +109,11 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
         - Add devTools() to app/index.js
         - If dont have, download redux-devtools-extension https://github.com/zalmoxisus/redux-devtools-extension
         - Show how Remote Redux Devtools works (CMD + CTRL + Up)
-13) Autentication
+13) Autentication with React Native and Firebase
       Commit: https://github.com/ReactjsProgram/React-Native/commit/b31b9d17741455fab39baa74ae06f736a64ccd46
       Changed: true (Some small changes in next commit)
       Text:
-        React Native + Firebase + FBSDK + Authentication (BLOG)
+        Authenticating a React Native app with Firebase and the Facebook SDK (BLOG)
       Video:
         - Add this.props.isAuthed === false to ReactModoroNavigator for SplashContainer (Reason this works is we know if the Navigator renders then isAuthenticating is already false)
         - Add propTypes for ^
@@ -142,20 +142,18 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
         - Fill out onAuthChange
         - At this point show the Redux flow in ReduxDevTools. App loads, default state is correct with authentication.isAuthenticating to true, NOT_AUTHED happens and then authentication.isAuthenticating goes to false.
         - Authenticate. Should be redireced to Home. Hit refresh, should get ShakeyLogo -> Home. Nice.
-14) Save User
+14) Persist User
       Commit: https://github.com/ReactjsProgram/React-Native/commit/82d37c97bd3876464bde0a42daca6282991a020f
-      Text:
-        - Saving data to Firebase
       Video:
         - Explain how firebase auths for you but doesnt save the user for you. So whenever we auth we want to save that user.
         - Create updateUser in auth.js
         - import updateUser into authentication
         - Call updateUser in onAuthChange then dispatch isAuthed. (Show this working by having firebase console open)
-15) Navbar
+15) React Native Navbar
       Commit: https://github.com/ReactjsProgram/React-Native/commit/702d437ed3f5e9302be7a31d5ca5bad43f827d97
       changed: true
       Text:
-        - Creating a HOC Navbar in React Native (BLOG)
+        - Creating a Navar Higher Order Component in React Native (BLOG)
       Video:
         - Create a ReactModoroNavbar folder and file
         - npm install --save react-native-navbar
@@ -171,7 +169,7 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
             - Create Gear.js
             - Import Gear into Home and add it as a rightButton. Show how it's showing but not aligned. Add styling
             - Click Gar. Show how it works. Talk about how now whenever we use ReactModoroNavbar we can easily add a left or right button.
-16) Gear Route
+16) Gear Navbar Icon
       Commit: https://github.com/ReactjsProgram/React-Native/commit/61ae17d6e55e0a69b2b49492334fb33e4e3c1c61
       Video:
         - Build out the skeleton for the Settings route so clicking on the gear does more than console.log (Also really show how routing works)
@@ -213,14 +211,14 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
 19) Flash Notification
       Commit: https://github.com/ReactjsProgram/React-Native/commit/76d1c7700aa08db528ffa92af7d5d383355578ad
       Text:
-        - Creating a Re-usable Flash Notification Component in React Native
+        - Creating a Reusable Flash Notification Component in React Native (Blog)
       Video:
         - We need a way to give the user feedback for certain actions. One good way is with a Flash Notification.
         - Build out flashNotification redux module
         - Build the FlashNotification component
         - Add FlashNotification to root AppContainer and tie of flashNotification redux module to it.
         - To test it out add showFlashNotification to SettingsContainer and show it in handleTimerComplete
-20) Save Settings (using Flash notification)
+20) Save Settings
       Commit: https://github.com/ReactjsProgram/React-Native/commit/c2eae066437af653c565d78005dabaff4e62437b
       Video:
         - Need to persist settings to Firebase as well as locally with Redux
@@ -261,7 +259,7 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
         - Create a skip rest function and pass it down.
         - Create a button to test skip rest is working.
         - Talk about the pros and cons of having all this state be in a component rather than in Redux and the final decision to do it.
-22) Connect Home to Redux
+22) Connecting Home to Redux
       Commit: https://github.com/ReactjsProgram/React-Native/commit/74ee7ea04cf129f75a43e3bbc3be3dd697095b99
       Video:
         - Now we need to stop playing around with dummy data and use the real stuff.
@@ -301,7 +299,7 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
           and create the PressableIcon HOC
       - Click Play, notice slight lag. That's because countdownRunning is waiting until 1 second to switch. Change that in handleToggleCountdown
       - At this point the UI for home should be done BESIDES the ProgressBar. All functionality works (besides score, obvi)
-24) Progress Bar
+24) React Native Progress Bar
       Commit: https://github.com/ReactjsProgram/React-Native/commit/562d52ba6292dbc53f95d506a69997f6e614c328
       changes: true (in Step 25)
       Video:
@@ -335,7 +333,7 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
         - Talk about how we don't want to show EVERYONE in the leaderboard, just top 15.
         - add orderByValue() and limitToLast(5) and see the result. Talk about how orderByValue() is for mixing with limittoLast but since objects don't have order so we still need to sort on the client.
         - Show how everything works.
-26) Update Score as Timer Countsdown
+26) Updating Scores
       Commit: https://github.com/ReactjsProgram/React-Native/commit/5ff218e0a436538adca89f143bf7c1023959b840
       Video:
         - Talk about how the point system will work
@@ -358,7 +356,7 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
 27) Leaderboard UI
       Commit: https://github.com/ReactjsProgram/React-Native/commit/9377c391cee9a87ae5f786899dd9ea3f631719e6
       Text:
-        - Something to do with ListView (BLOG)
+        - React Native Tutorial: Performant lists in React Native with ListView (BLOG)
       Video:
         - Talk about lists in React Native using ListView. You could just map with a <ScrollView>, but ListView is more performant.
         - Create constructor in LeaderboardContainer and init dataSource
@@ -373,10 +371,13 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
         - Import Leader into LeaderboardContainer and user that for RenderRow.
         - Pass in and add propTypes to Leader and show props to view
         - Style Leader.js
-28) App Store Prep
+28) React Native App Store Preparation
       Commit: https://github.com/ReactjsProgram/React-Native/commit/3cb3b5c9d8ae95ac2c04dc2761faa2fd706399f2
       Text:
-        Preparing a React Native App for the App Store: Launch Screen, Rotation, App Icons, and Publishing (BLOG)
+        Three part series (BLOG)
+          - React Native App Store Tutorial Part 1: Launch Screen
+          - React Native App Store Tutorial Part 2: App Icons
+          - React Native App Store Tutorial Part 3: Submitting to the App Store
       Video:
         See LaunchScreenNotes-Rotation-AppIcons-Notes.js
 29) App Store
