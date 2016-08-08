@@ -1,7 +1,4 @@
-Create Section and topic titles
-Update Teachable with Sections, Topic Titles, and new Sales Page.
-
-0) Intro to Course
+0) Intro to React Native Course
 1) Technology Overview
 2) React Native Installation
     Text: *Turn on Comments
@@ -31,7 +28,7 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
 5) Adding the Facebook SDK to a React Native App
     Text:
       - React Native Tutorial: Installing the Facebook SDK into a React Native Android and iOS App
-    Vide0:
+    Video:
       - Follow Steps in fbsdksteps.js file
       - Show LoginButton on app/index.js file
 6) Routing and Navigation with React Native
@@ -153,7 +150,7 @@ Update Teachable with Sections, Topic Titles, and new Sales Page.
       Commit: https://github.com/ReactjsProgram/React-Native/commit/702d437ed3f5e9302be7a31d5ca5bad43f827d97
       changed: true
       Text:
-        - Creating a Navar Higher Order Component in React Native (BLOG)
+        - Creating a Navbar Higher Order Component in React Native (BLOG)
       Video:
         - Create a ReactModoroNavbar folder and file
         - npm install --save react-native-navbar
