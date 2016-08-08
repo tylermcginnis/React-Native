@@ -1,13 +1,17 @@
+Create Section and topic titles
+Update Teachable with Sections, Topic Titles, and new Sales Page.
+
 0) Intro to Course
 1) Technology Overview
-2) Installation
+2) React Native Installation
     Text: *Turn on Comments
       - Installation for iOS
       - Installation for Androind
       - Include Watchmen and React Native CLI
-3) Hello World(s)
+      - Blog all ^?
+3) Hello World with React Native Android and iOS
     Text:
-        - React Native for Web Developers
+        - React Native Tutorial: React Native for React Developers
     Video:
         - react-native init ReactModoro
         - Show project and skeleton file
@@ -24,16 +28,16 @@
       - Verify both are still working
       - install babel-preset-react-native-stage-0 & babel-root-import
       - Set up custom .babelrc file for better imports with ~
-5) Adding the Facebook SDK
+5) Adding the Facebook SDK to a React Native App
     Text:
-      - Adding the Facebook SDK to a React Native app
-    Videp:
+      - React Native Tutorial: Installing the Facebook SDK into a React Native Android and iOS App
+    Vide0:
       - Follow Steps in fbsdksteps.js file
       - Show LoginButton on app/index.js file
 6) Routing and Navigation with React Native
     Commit: https://github.com/ReactjsProgram/React-Native/commit/166a9c13542829fe365305364ea4ff1f094ab3d8
     Text:
-      - A Living Guide to Routing and Navigation in React Native (BLOG)
+      - React Native Tutorial: A Guide to Routing and Navigation in React Native (BLOG)
     Vid:
       - Build out containers/App/AppContainer.js
       - Make app/index.js a SFC which renders <AppContainer />
@@ -41,10 +45,11 @@
       - Make sure SplashContainer/Splash work by rendering SplashContainer in AppContainer
       - Create ReactModoroNavigator w/ renderScene and configureScene
       - In AppContainer render ReactModoroNavigator instead of SplashContainer
-7) Pre-Splash UI
+7) React Native Loading Screen
     Commit: https://github.com/ReactjsProgram/React-Native/commit/60d31b58dd667f2df88ca922d835e82ee9758ee2
     Text
-      - React Native Animated 101 (BLOG)
+      - React Native Tutorial: Animated 101 (BLOG)
+      - Handling Images in React Native (BLOG)
     Video:
       - Create PreSplash Component (Skeleton)
       - Render PreSplash or Navigator depending on props.isAuthenticating (which will be undefined)
@@ -52,17 +57,17 @@
       - Build out UI for PreSplash
         - Center image first (SFC first)
         - Add animations (Switch to Class)
-8) Splash UI
+8) React Native Splash Screen
     Commit: https://github.com/ReactjsProgram/React-Native/commit/02c168a6ddb024be1ba1033a6d594dc900cf02d8
     Changed: true
     Video:
       - Remove isAuthenticating defaultProps from AppContainer
       - Build out UI for Splash.js
       - SplashContainer Changes
-9) Add Redux
+9) Adding Redux to a React Native app
     Commit: https://github.com/ReactjsProgram/React-Native/commit/29eccbd7f913f90e74dedb898f33c906502034ae
     Text:
-      - React Native + Redux. Why they're nice together. (BLOG)
+      - Utilizing Redux in a React Native app (BLOG)
     Video:
       - npm install --save redux react-redux redux-thunk
       - Create authentication module (talk about Ducks pattern)
@@ -139,6 +144,8 @@
         - Authenticate. Should be redireced to Home. Hit refresh, should get ShakeyLogo -> Home. Nice.
 14) Save User
       Commit: https://github.com/ReactjsProgram/React-Native/commit/82d37c97bd3876464bde0a42daca6282991a020f
+      Text:
+        - Saving data to Firebase
       Video:
         - Explain how firebase auths for you but doesnt save the user for you. So whenever we auth we want to save that user.
         - Create updateUser in auth.js
@@ -147,6 +154,8 @@
 15) Navbar
       Commit: https://github.com/ReactjsProgram/React-Native/commit/702d437ed3f5e9302be7a31d5ca5bad43f827d97
       changed: true
+      Text:
+        - Creating a HOC Navbar in React Native (BLOG)
       Video:
         - Create a ReactModoroNavbar folder and file
         - npm install --save react-native-navbar
@@ -203,6 +212,8 @@
         - Logout. Profit.
 19) Flash Notification
       Commit: https://github.com/ReactjsProgram/React-Native/commit/76d1c7700aa08db528ffa92af7d5d383355578ad
+      Text:
+        - Creating a Re-usable Flash Notification Component in React Native
       Video:
         - We need a way to give the user feedback for certain actions. One good way is with a Flash Notification.
         - Build out flashNotification redux module
@@ -346,6 +357,8 @@
         - (UPDATE): Add clearInterval to componentWillUnmount of HomeContainer or else throws errors in android.
 27) Leaderboard UI
       Commit: https://github.com/ReactjsProgram/React-Native/commit/9377c391cee9a87ae5f786899dd9ea3f631719e6
+      Text:
+        - Something to do with ListView (BLOG)
       Video:
         - Talk about lists in React Native using ListView. You could just map with a <ScrollView>, but ListView is more performant.
         - Create constructor in LeaderboardContainer and init dataSource
@@ -363,7 +376,7 @@
 28) App Store Prep
       Commit: https://github.com/ReactjsProgram/React-Native/commit/3cb3b5c9d8ae95ac2c04dc2761faa2fd706399f2
       Text:
-        Preparing a React Native App for the App Store: Launch Screen, Rotation, App Icons, and Publishing
+        Preparing a React Native App for the App Store: Launch Screen, Rotation, App Icons, and Publishing (BLOG)
       Video:
         See LaunchScreenNotes-Rotation-AppIcons-Notes.js
 29) App Store
