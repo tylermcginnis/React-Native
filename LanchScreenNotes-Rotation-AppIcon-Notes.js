@@ -7,7 +7,7 @@ Launch Screen
       - "Generate"
       - "Download"
   2) Change the folder in "assets/iphone" to be named LaunchImage.launchimage
-      - Remove every image that's not one of these (2 potraits and 2 landscapes)
+      - Remove every image that's not one of these (2 potraits and 2 landscapes) (Default-Portrait.png, Default-Portrait@2x.png, Default-Landscape.png, Default-Landscape@2x.png)
           Default@2x.png (640x960)
           Default-568h@2x.png (640x1136)
           Default-667h@2x.png (750x1334)

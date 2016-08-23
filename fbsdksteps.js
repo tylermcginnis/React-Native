@@ -8,7 +8,7 @@
     - Drag  FBSDKCoreKit.Framework, FBSDKLoginKit.Framework, FBSDKShareKit.Framework from ~/Documents/FacebookSDK to Frameworks folder
 6) Add ~/Documents/FacebookSDK to the projects "Framework Search Paths" in "Build Settings"
 7) Open up ios/ProjectName/Info.plist
-    - Add this
+    - Add this right under ????
       <key>CFBundleURLTypes</key>
       <array>
         <dict>
@@ -22,6 +22,7 @@
       <string>1573889739583887</string>
       <key>FacebookDisplayName</key>
       <string>ReactModoro</string>
+
     - Then add this
       <key>LSApplicationQueriesSchemes</key>
       <array>
@@ -30,7 +31,9 @@
         <string>fbauth2</string>
         <string>fbshareextension</string>
       </array>
-8) Get Bunde Identifier from Xcode/General and add it to FB
+8) Get Bunde Identifier from Xcode/General and add it to FB under Settings/Basic/iOS
+8.5) In AppDelegate.m import this
+      #import <FBSDKCoreKit/FBSDKCoreKit.h>
 9) Add this below that first block in AppDelegate.m
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

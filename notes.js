@@ -1,5 +1,15 @@
 0) Intro to React Native Course
+    - Welcome
+    - Pre Reqs
+    - Tech Covered
+    - Introduce ReactModoro
 1) Technology Overview
+    - React Native
+        - Guts
+    - Redux
+        - Why?
+    - Firebaes
+        - Why?
 2) React Native Installation
     Text: *Turn on Comments
       - Installation for iOS
@@ -57,6 +67,8 @@
 8) React Native Splash Screen
     Commit: https://github.com/ReactjsProgram/React-Native/commit/02c168a6ddb024be1ba1033a6d594dc900cf02d8
     Changed: true
+    Text:
+      Flexbox for React Native (BLOG)
     Video:
       - Remove isAuthenticating defaultProps from AppContainer
       - Build out UI for Splash.js

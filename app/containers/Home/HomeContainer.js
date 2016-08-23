@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import { Platform } from 'react-native'
+import { Platform, InteractionManager } from 'react-native'
 import { connect } from 'react-redux'
 import { Home } from '~/components'
 import { incrementAndHandleScore, decrementAndHandleScore } from '~/redux/modules/scores'
@@ -79,8 +79,10 @@ export default class HomeContainer extends Component {
     })
   }
   handleToSettings = () => {
-    this.props.navigator.push({
-      settings: true,
+    InteractionManager.runAfterInteractions(() => {
+      this.props.navigator.push({
+        settings: true,
+      })
     })
   }
   getProgress = () => {
