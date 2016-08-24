@@ -8,5 +8,9 @@
   "dependencies": {
     "react": "15.2.1",
     "react-native": "0.31.0"
+  },
+  "devDependencies": {
+    "babel-preset-react-native-stage-0": "^1.0.1",
+    "babel-root-import": "^4.1.0"
   }
 }

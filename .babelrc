@@ -1,0 +1,10 @@
+{
+  "presets": [
+    "react-native-stage-0"
+  ],
+  "plugins": [
+    ["babel-root-import", {
+      "rootPathSuffix": "app"
+    }]
+  ]
+}
