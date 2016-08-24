@@ -1,15 +1,11 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
   View
 } from 'react-native';
+
+import { LoginButton } from 'react-native-fbsdk'
 
 export default class ReactModoro extends Component {
   render() {
@@ -18,6 +14,10 @@ export default class ReactModoro extends Component {
         <Text style={styles.welcome}>
           Welcome!
         </Text>
+        <LoginButton
+          onLoginFinished={() => ({})}
+          onLogoutFinished={() => ({})}
+          defaultAudience='everyone' />
       </View>
     );
   }
