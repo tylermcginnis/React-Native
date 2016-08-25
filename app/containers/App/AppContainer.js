@@ -5,10 +5,7 @@ import { PreSplash } from '~/components'
 
 export default class AppContainer extends Component {
   static propTypes = {
-    isAuthenticating: PropTypes.bool.isRequired,
-  }
-  static defaultProps = {
-    isAuthenticating: true
+    // isAuthenticating: PropTypes.bool.isRequired,
   }
   render () {
     return (
