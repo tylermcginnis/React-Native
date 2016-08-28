@@ -19,7 +19,7 @@ export default function FooterTabs (props) {
         title='Home'
         selected={props.activeFooterTab === 'home'}
         onPress={() => props.onTabSelect('home')}>
-          <HomeContainer navigator={navigator}/>
+          <HomeContainer navigator={props.navigator}/>
       </Icon.TabBarItem>
       <Icon.TabBarItem
         iconSize={35}
@@ -27,7 +27,7 @@ export default function FooterTabs (props) {
         title='Leaderboard'
         selected={props.activeFooterTab === 'leaderboard'}
         onPress={() => props.onTabSelect('leaderboard')}>
-          <LeaderboardContainer navigator={navigator}/>
+          <LeaderboardContainer navigator={props.navigator}/>
       </Icon.TabBarItem>
     </TabBarIOS>
   )
