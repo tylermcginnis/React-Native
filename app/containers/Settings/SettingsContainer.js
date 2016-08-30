@@ -1,8 +1,10 @@
 import React, { PropTypes, Component } from 'react'
 import { View, Text } from 'react-native'
 import { Settings } from '~/components'
+import { connect } from 'react-redux'
+import { handleUnauth } from '~/redux/modules/authentication'
 
-export default class SettingsContainer extends Component {
+class SettingsContainer extends Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
   }
@@ -23,7 +25,7 @@ export default class SettingsContainer extends Component {
     console.log('Finished Sliding Rest Timer')
   }
   handleLogout = () => {
-    console.log('Logging Out!')
+    this.props.dispatch(handleUnauth())
   }
   render () {
     return (
@@ -39,3 +41,5 @@ export default class SettingsContainer extends Component {
     )
   }
 }
+
+export default connect()(SettingsContainer)
