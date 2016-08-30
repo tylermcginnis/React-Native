@@ -9,7 +9,7 @@ export default class HomeContainer extends Component {
   state = {}
   render () {
     return (
-      <Home />
+      <Home openDrawer={this.props.openDrawer} />
     )
   }
 }

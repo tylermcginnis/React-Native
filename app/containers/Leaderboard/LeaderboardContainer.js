@@ -9,7 +9,7 @@ export default class LeaderboardContainer extends Component {
   state = {}
   render () {
     return (
-      <Leaderboard />
+      <Leaderboard openDrawer={this.props.openDrawer} />
     )
   }
 }
