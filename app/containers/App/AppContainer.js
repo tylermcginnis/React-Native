@@ -7,6 +7,8 @@ import { firebaseAuth } from '~/config/constants'
 import { onAuthChange } from '~/redux/modules/authentication'
 import { hideFlashNotification } from '~/redux/modules/flashNotification'
 
+console.disableYellowBox = true
+
 class AppContainer extends Component {
   static propTypes = {
     isAuthenticating: PropTypes.bool.isRequired,
