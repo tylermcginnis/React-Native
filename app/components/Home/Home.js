@@ -3,8 +3,8 @@ import { View, StyleSheet, Text, Platform, TouchableOpacity } from 'react-native
 import { ReactModoroNavbar, Gear, Hamburger } from '~/components'
 
 Home.propTypes = {
-  timer: PropTypes.number.isRequired,
-  rest: PropTypes.number.isRequired,
+  timer: PropTypes.string.isRequired,
+  rest: PropTypes.string.isRequired,
   activeCountdown: PropTypes.string.isRequired,
   onToggleCountdown: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
