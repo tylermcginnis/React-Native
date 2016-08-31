@@ -1,14 +1,24 @@
 import React, { PropTypes, Component } from 'react'
+import { connect } from 'react-redux'
 import { Home } from '~/components'
 
-export default class HomeContainer extends Component {
+function secondsToHMS (secs) {
+  const hours = Math.floor(secs / 3600)
+  const mins = Math.floor(secs % 3600 / 60)
+  const seconds = Math.floor(secs % 3600 % 60)
+  return ((hours > 0 ? hours + ":" + (mins < 10 ? "0" : "") : "") + mins + ":" + (seconds < 10 ? "0" : "") + seconds)
+}
+
+class HomeContainer extends Component {
   static propTypes = {
+    timerDuration: PropTypes.number.isRequired,
+    restDuration: PropTypes.number.isRequired,
     openDrawer: PropTypes.func,
     navigator: PropTypes.object.isRequired,
   }
   state = {
-    timer: 10,
-    rest: 10,
+    timer: this.props.timerDuration,
+    rest: this.props.restDuration,
     activeCountdown: 'timer',
     countdownRunning: false,
   }
@@ -24,8 +34,10 @@ export default class HomeContainer extends Component {
 
       if (nextSecond === 0) {
         this.setState({
-          [activeCountdown]: 10,
-          activeCountdown: this.state.activeCountdown === 'timer' ? 'rest' : 'timer'
+          [activeCountdown]: activeCountdown === 'timer'
+            ? this.props.timerDuration
+            : this.props.restDuration,
+          activeCountdown: activeCountdown === 'timer' ? 'rest' : 'timer'
         })
       } else {
         this.setState({
@@ -38,13 +50,13 @@ export default class HomeContainer extends Component {
   handleReset = () => {
     window.clearInterval(this.interval)
     this.setState({
-      timer: 10,
+      timer: this.props.timerDuration,
       countdownRunning: false,
     })
   }
   handleSkipRest = () => {
     this.setState({
-      rest: 10,
+      rest: this.props.restDuration,
       activeCountdown: 'timer',
     })
   }
@@ -56,8 +68,8 @@ export default class HomeContainer extends Component {
   render () {
     return (
       <Home
-        timer={this.state.timer}
-        rest={this.state.rest}
+        timer={secondsToHMS(this.state.timer)}
+        rest={secondsToHMS(this.state.rest)}
         activeCountdown={this.state.activeCountdown}
         onReset={this.handleReset}
         onSkipRest={this.handleSkipRest}
@@ -67,3 +79,14 @@ export default class HomeContainer extends Component {
     )
   }
 }
+
+function mapStateToProps ({settings}) {
+  return {
+    timerDuration: settings.timerDuration * 60,
+    restDuration: settings.restDuration * 60,
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(HomeContainer)
