@@ -28,6 +28,10 @@ class HomeContainer extends Component {
       return window.clearInterval(this.interval)
     }
 
+    this.setState({
+      countdownRunning: true,
+    })
+
     this.interval = setInterval(() => {
       const activeCountdown = this.state.activeCountdown
       const nextSecond = this.state[activeCountdown] - 1
@@ -42,7 +46,6 @@ class HomeContainer extends Component {
       } else {
         this.setState({
           [activeCountdown]: nextSecond,
-          countdownRunning: true,
         })
       }
     }, 1000)
@@ -65,14 +68,21 @@ class HomeContainer extends Component {
       settings: true
     })
   }
+  getProgress = () => {
+    return this.state.activeCountdown === 'timer'
+      ? 1 - (this.state.timer / this.props.timerDuration)
+      : 1 - (this.state.rest / this.props.restDuration)
+  }
   render () {
     return (
       <Home
+        countdownRunning={this.state.countdownRunning}
         timer={secondsToHMS(this.state.timer)}
         rest={secondsToHMS(this.state.rest)}
         activeCountdown={this.state.activeCountdown}
         onReset={this.handleReset}
         onSkipRest={this.handleSkipRest}
+        progress={this.getProgress()}
         onToggleCountdown={this.handleToggleCountdown}
         handleToSettings={this.handleToSettings}
         openDrawer={this.props.openDrawer} />
