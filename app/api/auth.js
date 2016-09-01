@@ -11,7 +11,10 @@ export function authWithToken (accesToken) {
 }
 
 export function updateUser (user) {
-  return ref.child(`users/${user.uid}`).set(user)
+  return Promise.all([
+    ref.child(`users/${user.uid}`).set(user),
+    ref.child(`scores/${user.uid}`).update(user)
+  ])
 }
 
 export function logout () {
