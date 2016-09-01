@@ -14,6 +14,7 @@ Home.propTypes = {
   activeCountdown: PropTypes.string.isRequired,
   countdownRunning: PropTypes.bool.isRequired,
   progress: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
   onToggleCountdown: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   onSkipRest: PropTypes.func.isRequired,
@@ -28,7 +29,7 @@ export default function Home (props) {
         title='Home'
         leftButton={Platform.OS === 'android' ? <Hamburger onPress={props.openDrawer} /> : null}
         rightButton={<Gear onPress={props.handleToSettings}/>} />
-      <Score count={95} />
+      <Score count={props.score} />
       <Countdown formattedTime={props[props.activeCountdown]} />
       <ProgressBar style={{marginLeft: 20, marginRight: 20}} progress={props.progress} />
       <View style={styles.footer}>

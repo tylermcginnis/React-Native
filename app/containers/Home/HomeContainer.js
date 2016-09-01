@@ -13,6 +13,7 @@ class HomeContainer extends Component {
   static propTypes = {
     timerDuration: PropTypes.number.isRequired,
     restDuration: PropTypes.number.isRequired,
+    score: PropTypes.number.isRequired,
     openDrawer: PropTypes.func,
     navigator: PropTypes.object.isRequired,
   }
@@ -78,6 +79,7 @@ class HomeContainer extends Component {
       <Home
         countdownRunning={this.state.countdownRunning}
         timer={secondsToHMS(this.state.timer)}
+        score={this.props.score}
         rest={secondsToHMS(this.state.rest)}
         activeCountdown={this.state.activeCountdown}
         onReset={this.handleReset}
@@ -90,10 +92,11 @@ class HomeContainer extends Component {
   }
 }
 
-function mapStateToProps ({settings}) {
+function mapStateToProps ({settings, scores, authentication}) {
   return {
     timerDuration: settings.timerDuration * 60,
     restDuration: settings.restDuration * 60,
+    score: scores.usersScores[authentication.authedId],
   }
 }
 
