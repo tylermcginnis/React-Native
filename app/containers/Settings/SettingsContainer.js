@@ -4,14 +4,17 @@ import { Settings } from '~/components'
 import { connect } from 'react-redux'
 import { handleUnauth } from '~/redux/modules/authentication'
 import { showFlashNotification } from '~/redux/modules/flashNotification'
+import { handleAndUpdateTimer, handleAndUpdateRest } from '~/redux/modules/settings'
 
 class SettingsContainer extends Component {
   static propTypes = {
+    timerDuration: PropTypes.number.isRequired,
+    restDuration: PropTypes.number.isRequired,
     navigator: PropTypes.object.isRequired,
   }
   state = {
-    timerDuration: 20,
-    restDuration: 5,
+    timerDuration: this.props.timerDuration,
+    restDuration: this.props.restDuration,
   }
   handleTimerChange = (timerDuration) => {
     this.setState({timerDuration})
@@ -20,10 +23,14 @@ class SettingsContainer extends Component {
     this.setState({restDuration})
   }
   handleTimerComplete = () => {
-    this.props.dispatch(showFlashNotification({text: 'Duration Saved!'}))
+    this.props.dispatch(handleAndUpdateTimer(this.state.timerDuration))
+      .then(() => this.props.dispatch(showFlashNotification({text: 'Duration Saved!'})))
+      .catch(() => this.props.dispatch(showFlashNotification({text: 'Error Updating Timer Duration'})))
   }
   handleRestComplete = () => {
-    console.log('Finished Sliding Rest Timer')
+    this.props.dispatch(handleAndUpdateRest(this.state.restDuration))
+      .then(() => this.props.dispatch(showFlashNotification({text: 'Duration Saved!'})))
+      .catch(() => this.props.dispatch(showFlashNotification({text: 'Error Updating Timer Duration'})))
   }
   handleLogout = () => {
     this.props.dispatch(handleUnauth())
@@ -43,4 +50,13 @@ class SettingsContainer extends Component {
   }
 }
 
-export default connect()(SettingsContainer)
+function mapStateToProps ({settings}) {
+  return {
+    timerDuration: settings.timerDuration,
+    restDuration: settings.restDuration,
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(SettingsContainer)
