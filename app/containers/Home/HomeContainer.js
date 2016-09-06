@@ -31,6 +31,19 @@ class HomeContainer extends Component {
     activeCountdown: 'timer',
     countdownRunning: false,
   }
+  componentWillReceiveProps (nextProps) {
+    if (this.props.timerDuration !== nextProps.timerDuration) {
+      this.setState({
+        timer: nextProps.timerDuration
+      })
+    }
+
+    if (this.props.restDuration !== nextProps.restDuration) {
+      this.setState({
+        rest: nextProps.restDuration
+      })
+    }
+  }
   handleToggleCountdown = () => {
     if (this.state.countdownRunning === true) {
       this.setState({countdownRunning: false})
