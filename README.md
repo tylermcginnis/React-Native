@@ -1,4 +1,4 @@
-[<img src="http://www.reactjsprogram.com/images/reactjsprogram-500.png" width="250" align="right">](http://reactjsprogram.com)
+[<img src="https://cloud.githubusercontent.com/assets/2933430/21000144/6e6cfa86-bcd6-11e6-950c-149059841f19.png" width="250" align="right">](http://reactjsprogram.com)
 
 Learn React Native
 ========
@@ -8,4 +8,4 @@ Learn React Native
 ## Notes
 Every video is coincided with a branch. If you want to compare your code with mine or you just want to play around with the code, check out the different branches on this repository.
 
-[<img src="http://www.reactjsprogram.com/images/social-banner.png" width="500" align="left">](http://twitter.com/tylermcginnis33)
+[<img src="https://cloud.githubusercontent.com/assets/2933430/21000153/6e9fa846-bcd6-11e6-9e09-2e6bb868f71c.png" width="250" align="left">](http://twitter.com/tylermcginnis33)
